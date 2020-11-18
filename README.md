@@ -1,4 +1,6 @@
 # xinlong3-xiuhaod2-zfeng13-siyiyu2
 Final Project
 
-please git pull before coding
+Please "git pull" before start coding!
+
+Please write log.txt after you finish your tasks.
