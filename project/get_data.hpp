@@ -6,18 +6,10 @@
 using namespace std;
 
 
-template <class T>
-vector<T> get_data<T>::read_data(const string & filename, int check) {
-    if (check == 0) {
-        return read_airport_from_file(filename);
-    }
-    // if (check == 1) {
-    //     return read_route(filename);
-    // }
-}
 
-template <class T>
-vector<vertex> get_data<T>::read_airport_from_file() {
+
+
+vector<vertex> get_data::read_airport_from_file() {
     vector<vertex> out;
     ifstream wordsFile("airport.dat");
     string line;
@@ -30,8 +22,8 @@ vector<vertex> get_data<T>::read_airport_from_file() {
     return out;
 }
 
-template <class T>
-vector<edge> get_data<T>::read_route_from_file() {
+
+vector<edge> get_data::read_route_from_file() {
     vector<edge> out;
     ifstream wordsFile("route.dat");
     string line;
@@ -45,8 +37,8 @@ vector<edge> get_data<T>::read_route_from_file() {
 }
 
 
-template <class T>
-vertex get_data<T>::split_vertex(string input) {
+
+vertex get_data::split_vertex(string input) {
     int first = input.find(',');
     string id = input.substr(0, first);
     input=input.substr(first+1);
