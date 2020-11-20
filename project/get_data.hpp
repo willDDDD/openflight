@@ -1,4 +1,4 @@
-#include "get_data.h"
+// #include "get_data.h"
 #include <utility>
 #include <algorithm>
 #include <iostream>
@@ -9,9 +9,9 @@ using namespace std;
 
 
 
-vector<vertex> get_data::read_airport_from_file() {
+vector<vertex> get_data::read_airport_from_file(string file_name) {
     vector<vertex> out;
-    ifstream wordsFile("airport.dat");
+    ifstream wordsFile(file_name); /* "airport.dat" or any appropriate file name */
     string line;
     if (wordsFile.is_open()) {
         while (getline(wordsFile, line)) {
@@ -23,14 +23,14 @@ vector<vertex> get_data::read_airport_from_file() {
 }
 
 
-vector<edge> get_data::read_route_from_file() {
+vector<edge> get_data::read_route_from_file(string file_name) {
     vector<edge> out;
-    ifstream wordsFile("route.dat");
+    ifstream wordsFile(file_name); /* "route.dat" or any appropriate file name */
     string line;
     if (wordsFile.is_open()) {
         while (getline(wordsFile, line)) {
             string s = line;
-            out.push_back(split_vertex(s));
+            out.push_back(split_vertex(s)); /* should be split_edge(e) */
         }
     }
     return out;

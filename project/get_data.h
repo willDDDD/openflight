@@ -10,8 +10,8 @@ using namespace std;
 
 class get_data {
     public:
-      vector<edge> read_route_from_file();
-      vector<vertex> read_airport_from_file();
+      vector<edge> read_route_from_file(string file_name);
+      vector<vertex> read_airport_from_file(string file_name);
       vertex split_vertex(string);
 };
 
