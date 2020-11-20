@@ -1,1 +1,17 @@
 What did you do today? Please indicate your work in this log.
+
+2020/11/20
+    create:
+        edge.cpp edge.h
+        vertex.cpp vertex.h
+        get_data.hpp get_data.h
+        main.cpp
+        Makefile
+
+    error: 
+        ifstream does not work.
+
+    TODO: 
+        fix ifstream
+        add route.dat
+

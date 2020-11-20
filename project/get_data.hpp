@@ -8,27 +8,41 @@ using namespace std;
 template <class T>
 vector<T> get_data<T>::read_data(const string & filename, int check) {
     if (check == 0) {
-        return read_airport(filename);
+        return read_airport_from_file(filename);
     }
-    if (check == 1) {
-        return read_route(filename);
-    }
+    // if (check == 1) {
+    //     return read_route(filename);
+    // }
 }
 
 template <class T>
-vector<vertex> get_data<T>::read_airport(const string & filename) {
-    vector<vertex> ret;
-    ifstream wordsFile(filename);
+vector<vertex> get_data<T>::read_airport_from_file() {
+    vector<vertex> out;
+    ifstream wordsFile("airport.dat");
     string line;
     if (wordsFile.is_open()) {
-        /* Reads a line from `wordsFile` into `word` until the file ends. */
         while (getline(wordsFile, line)) {
             string s = line;
-            ret.push_back(split_vertex(s));
+            out.push_back(split_vertex(s));
         }
     }
-    return ret;
+    return out;
 }
+
+template <class T>
+vector<edge> get_data<T>::read_route_from_file() {
+    vector<edge> out;
+    ifstream wordsFile("route.dat");
+    string line;
+    if (wordsFile.is_open()) {
+        while (getline(wordsFile, line)) {
+            string s = line;
+            out.push_back(split_vertex(s));
+        }
+    }
+    return out;
+}
+
 
 template <class T>
 vertex get_data<T>::split_vertex(string input) {
