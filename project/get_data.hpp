@@ -1,4 +1,4 @@
-#include "get_data.h"
+// #include "get_data.h"
 #include <utility>
 #include <algorithm>
 #include <iostream>
@@ -6,19 +6,7 @@
 using namespace std;
 
 
-template <class T>
-vector<T> get_data<T>::read_data(const string & filename, int check) {
-    if (check == 0) {
-        return read_airport_from_file(filename);
-    }
-    if (check == 1) {
-        return read_route(filename);
-    }
-}
-
-
-template <class T>
-vertex get_data<T>::split_vertex(string input) {
+vertex get_data::split_vertex(string input) {
     int first = input.find(',');
     string id = input.substr(0, first);
     input=input.substr(first+1);
