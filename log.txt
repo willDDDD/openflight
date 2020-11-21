@@ -9,5 +9,18 @@ What did you do today? Please indicate your work in this log.
         main.cpp
         Makefile
     TODO: 
-        add route.dat
+        add new file: route.dat
+
+
+2020/11/21
+    Apply the given template
+    Able to print out the airport_sample
+    create:
+        folder: catch tests
+        airport_sample.dat
+        readFromFile.cpp readFromFile.hpp
+    TODO:
+        add new file: route.dat
+        get_data.cpp
+
 
