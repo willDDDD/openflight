@@ -11,37 +11,9 @@ vector<T> get_data<T>::read_data(const string & filename, int check) {
     if (check == 0) {
         return read_airport_from_file(filename);
     }
-    // if (check == 1) {
-    //     return read_route(filename);
-    // }
-}
-
-template <class T>
-vector<vertex> get_data<T>::read_airport_from_file() {
-    vector<vertex> out;
-    ifstream wordsFile("airport.dat");
-    string line;
-    if (wordsFile.is_open()) {
-        while (getline(wordsFile, line)) {
-            string s = line;
-            out.push_back(split_vertex(s));
-        }
+    if (check == 1) {
+        return read_route(filename);
     }
-    return out;
-}
-
-template <class T>
-vector<edge> get_data<T>::read_route_from_file() {
-    vector<edge> out;
-    ifstream wordsFile("route.dat");
-    string line;
-    if (wordsFile.is_open()) {
-        while (getline(wordsFile, line)) {
-            string s = line;
-            out.push_back(split_vertex(s));
-        }
-    }
-    return out;
 }
 
 
@@ -74,18 +46,4 @@ vertex get_data<T>::split_vertex(string input) {
 }
 
 
-// AnagramDict::AnagramDict(const string& filename)
-// {
-//     /* Your code goes here! */
-//     ifstream wordsFile(filename);
-//     string word;
-//     if (wordsFile.is_open()) {
-//         /* Reads a line from `wordsFile` into `word` until the file ends. */
-//         while (getline(wordsFile, word)) {
-//             string s = word;
-//             std::sort(s.begin(),s.end());
-//             dict[s].push_back(word);
-//         }
-//     }
-// }
 
