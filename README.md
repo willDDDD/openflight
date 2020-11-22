@@ -30,3 +30,13 @@ What did you do today? Please indicate your work in this log.
     TODO:
         add new file: route.dat
         get_data.cpp
+
+2020/11/22
+    readFromFile can read airport and route
+    Able to print the sample data in main function with split
+    add documentations for functions
+    create:
+        route.dat route_sample.dat
+    TODO:
+        discuss how to implement with adjacent list
+        

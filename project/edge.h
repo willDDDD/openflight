@@ -2,10 +2,17 @@
 #include <string>
 using namespace std;
 
+
+    /**
+     * The edge class
+     * We define each route as an edge
+     * Each edge is initallize by a unique id, source airport id, and destination airport id
+     * All of these three are in integer
+     */
 class edge {
     public:
      edge(int,int,int);     
-     int id; //Unique OpenFlights identifier for this airport.
-     int source;//	Unique OpenFlights identifier for source airport (see Airport)
-     int dest;//Unique OpenFlights identifier for destination airport (see Airport)
+     int id; 
+     int source;
+     int dest;
 };
