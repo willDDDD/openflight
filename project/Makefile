@@ -1,3 +1,5 @@
+# Reference: Final Project Demo Makefile
+
 EXENAME = finalproj
 OBJS = readFromFile.o main.o vertex.o edge.o
 
