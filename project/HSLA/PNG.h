@@ -1,8 +1,3 @@
-/**
- * @file PNG.h
- *
- * @author CS 225: Data Structures
- */
 
 #pragma once
 
