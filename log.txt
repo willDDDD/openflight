@@ -33,3 +33,12 @@ What did you do today? Please indicate your work in this log.
     TODO:
         discuss how to implement with adjacent list
         
+
+2020/11/24
+    Able to find the matched airport on the world map
+    implement a Hashtable
+    create:
+        graph.cpp graph.hpp
+    TODO: 
+        implement the graph using desired algorithm
+        draw the airline on the map using HSLA
