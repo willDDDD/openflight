@@ -36,4 +36,6 @@ vector<edge> read_route(const string &filename);
  */
 edge split_edge(string input);
 
+int maxsize;
+
 

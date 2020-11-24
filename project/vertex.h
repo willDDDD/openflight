@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <deque>
+#include "edge.h"
 using namespace std;
 
 
@@ -10,6 +12,7 @@ using namespace std;
  */
 class vertex {
     public:
+        vertex();
         vertex(int a, double b, double c, string d, string e);
         /* 
          * id the Airport ID: unique OpenFlights identifier for this airport.
@@ -31,4 +34,7 @@ class vertex {
          * IATA the 3-letter IATA code. Null if not assigned/unknown.
          */
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
+
+        pair<int, int> findAirport(vertex v); //result should be int since pixel coor is represented by ints
+        deque<edge> incid_edgs;
 };
