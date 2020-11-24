@@ -31,7 +31,7 @@ class vertex {
          */
         string city;
         /* 
-         * IATA the 3-letter IATA code. Null if not assigned/unknown.
+         * IATA the 3-letter IATA code. Null if not asssigned/unknown.
          */
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
 

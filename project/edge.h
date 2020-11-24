@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "vertex.h"
 using namespace std;
 
 
@@ -24,4 +25,7 @@ class edge {
          * dest the Destination Airport ID
          */
         int dest;
+
+        void drawAirline(vertex source, vertex dest);
+
 };
