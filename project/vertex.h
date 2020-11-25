@@ -35,6 +35,6 @@ class vertex {
          */
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
 
-        pair<int, int> findAirport(vertex v); //result should be int since pixel coor is represented by ints
+        pair<int, int> findAirport(); //result should be int since pixel coor is represented by ints
         deque<edge> incid_edgs;
 };

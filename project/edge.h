@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include "vertex.h"
+#include "HSLA/HSLAPixel.h"
+#include "HSLA/PNG.h"
 using namespace std;
+using namespace cs225;
 
 
 /**
@@ -25,6 +28,10 @@ class edge {
          * dest the Destination Airport ID
          */
         int dest;
+
+
+        HSLAPixel edge_color;
+
 
         void drawAirline(vertex source, vertex dest);
 

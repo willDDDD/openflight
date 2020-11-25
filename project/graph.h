@@ -3,6 +3,7 @@
 //hash table, seperate chaining, link list
 #include "vertex.h"
 #include <vector>
+#include <deque>
 using namespace std;
 
 class graph {
