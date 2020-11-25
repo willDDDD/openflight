@@ -4,13 +4,14 @@
 #include "vertex.h"
 #include <vector>
 #include <deque>
+#include "listnode.h"
 using namespace std;
 
 class graph {
     private:
       vertex *arrOfVertices;
-      unsigned size;
+      listnode * right_list;
     public:
       void buildhash(vector<vertex> input);
-      void incidentedge(vector<edge> input);
+      void build_icedge_listnod(vector<edge> input);
 };

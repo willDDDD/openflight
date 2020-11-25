@@ -42,3 +42,13 @@ What did you do today? Please indicate your work in this log.
     TODO: 
         implement the graph using desired algorithm
         draw the airline on the map using HSLA
+
+2020/11/25
+    PROBLEMs:
+        The edge class seems not working. How to draw the airline?
+        How to adjust changes in Makefile? For example, which class need to create an object file
+        Confuse about the arguments in drawAirline. 
+        
+        How to implement shortest path?
+        or change shortest path to spanning tree.
+        how to deal with route.dat

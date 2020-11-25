@@ -3,6 +3,7 @@
 #include "vertex.h"
 #include "HSLA/HSLAPixel.h"
 #include "HSLA/PNG.h"
+#include "listnode.h"
 using namespace std;
 using namespace cs225;
 
@@ -33,6 +34,9 @@ class edge {
         HSLAPixel edge_color;
 
 
-        void drawAirline(vertex source, vertex dest);
+        void drawAirline(PNG png, vertex source, vertex dest);
+        void drawAirlines(PNG png);
 
+        listnode* sou_;
+        listnode* des_;
 };
