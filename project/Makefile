@@ -35,8 +35,8 @@ $(EXENAME): output_msg $(OBJS)
 readFromFile.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp 
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp
 
-graph.o: vertex.cpp listnode.cpp graph.cpp
-	$(CXX) $(CXXFLAGS) vertex.cpp listnode.cpp graph.cpp
+graph.o: vertex.cpp edge.cpp listnode.cpp graph.cpp
+	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp listnode.cpp graph.cpp
 
 test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
 	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test

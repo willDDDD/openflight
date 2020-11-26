@@ -2,6 +2,7 @@
 
 //hash table, seperate chaining, link list
 #include "vertex.h"
+#include "edge.h"
 #include <vector>
 #include <deque>
 #include "listnode.h"
