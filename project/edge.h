@@ -3,19 +3,20 @@
 #include "vertex.h"
 #include "HSLA/HSLAPixel.h"
 #include "HSLA/PNG.h"
+#include "listnode.h"
 using namespace std;
 using namespace cs225;
 
 
 /**
- * The edge class
- * We define each route as an edge
- * Each edge is initallized by a unique id, source airport id, and destination airport id
+ * The Edge class
+ * We define each route as an Edge
+ * Each Edge is initallized by a unique id, source airport id, and destination airport id
  * All of these three are in integer
  */
-class edge {
+class Edge {
     public:
-        edge(int,int,int);
+        Edge(int,int,int);
         /*
          * id the Airline ID
          */
@@ -33,6 +34,9 @@ class edge {
         HSLAPixel edge_color;
 
 
-        void drawAirline(vertex source, vertex dest);
+        void drawAirline(PNG png, Vertex source, Vertex dest);
+        void drawAirlines(PNG png);
 
+        Listnode* sou_;
+        Listnode* des_;
 };

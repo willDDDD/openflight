@@ -520,7 +520,7 @@ typedef struct LodePNGInfo
   /*
   iCCP chunk: optional. May not appear at the same time as sRGB.
 
-  LodePNG does not parse or use the ICC profile (except its color space header field for an edge case), a
+  LodePNG does not parse or use the ICC profile (except its color space header field for an Edge case), a
   separate library to handle the ICC data (not included in LodePNG) format is needed to use it for color
   management and conversions.
 

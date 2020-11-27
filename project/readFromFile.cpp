@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 #include "readFromFile.h"
-vector<vertex> read_airport(const string &filename)
+vector<Vertex> read_airport(const string &filename)
 {
-	vector<vertex> ret;
+	vector<Vertex> ret;
 	ifstream wordsFile(filename);
 	string line;
 	if (wordsFile.is_open())
@@ -22,9 +22,9 @@ vector<vertex> read_airport(const string &filename)
 	return ret;
 }
 
-vector<edge> read_route(const string &filename)
+vector<Edge> read_route(const string &filename)
 {
-	vector<edge> ret;
+	vector<Edge> ret;
 	ifstream wordsFile(filename);
 	string line;
 	if (wordsFile.is_open())
@@ -39,7 +39,7 @@ vector<edge> read_route(const string &filename)
 	return ret;
 }
 
-vertex split_vertex(string input)
+Vertex split_vertex(string input)
 {
 	int first = input.find(',');
 	string id = input.substr(0, first);
@@ -64,9 +64,9 @@ vertex split_vertex(string input)
 	int id_ = atoi(id.c_str());
 	double lat_ = atof(lat.c_str());
 	double longt_ = atof(longt.c_str());
-	return vertex(id_, lat_, longt_, city, IATA);
+	return Vertex(id_, lat_, longt_, city, IATA);
 }
-edge split_edge(string input) {
+Edge split_edge(string input) {
 	int d1 = input.find(',');
 	input = input.substr(d1+1);
 	int first = input.find(',');
@@ -84,5 +84,5 @@ edge split_edge(string input) {
 	int id_ = (id == "NA") ? -1 : atoi(id.c_str());
 	int source_ = (source == "NA") ? -1 : atoi(source.c_str());
 	int dest_= (dest == "NA") ? -1 : atoi(dest.c_str());
-	return edge(id_,source_,dest_);
+	return Edge(id_,source_,dest_);
 }

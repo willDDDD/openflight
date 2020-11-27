@@ -3,13 +3,13 @@
 #include "HSLA/PNG.h"
 using namespace std;
 
-vertex::vertex() {
+Vertex::Vertex() {
     //do nothing;
 }
 
 
 /**
- * Constructor of vertex
+ * Constructor of Vertex
  *
  * @param a a unique id
  * @param b the latidute of the airport
@@ -17,7 +17,7 @@ vertex::vertex() {
  * @param d the city name where the airport locates
  * @param e the ITAT code for the airport
  */
-vertex::vertex(int a, double b, double c, string d, string e) {
+Vertex::Vertex(int a, double b, double c, string d, string e) {
     id = a;
     lat = b;
     longt = c;
@@ -26,7 +26,7 @@ vertex::vertex(int a, double b, double c, string d, string e) {
 }
 
 //get Airport pixel cooridnate on the map
-pair<int, int> vertex::findAirport() {
+pair<int, int> Vertex::findAirport() {
     double lat_per_pix = 180.0/1025;
     double long_per_pix = 360.0/2048;
     int center_lat_pix = 1025/2;
