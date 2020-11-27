@@ -53,4 +53,10 @@ What did you do today? Please indicate your work in this log.
         or change shortest path to spanning tree.
         how to deal with route.dat
 
-        we have "unknown type name" error after carefully checking the 
+        we have "unknown type name" error
+
+2020/11/27
+    We solve the unknown typename problem due to crossing-reference
+    We implement the graph using the Adjlist and BFS. 
+    We deleted a unsued class: listnode
+    

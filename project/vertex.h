@@ -37,6 +37,7 @@ class Vertex {
          * IATA the 3-letter IATA code. Null if not asssigned/unknown.
          */
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
+        bool is_explored;
 
         pair<int, int> findAirport(); //result should be int since pixel coor is represented by ints
 

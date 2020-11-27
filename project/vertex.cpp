@@ -24,6 +24,7 @@ Vertex::Vertex(int a, double b, double c, string d, string e) {
     longt = c;
     city = d;
     IATA = e;
+    is_explored = false;
 }
 
 //get Airport pixel cooridnate on the map

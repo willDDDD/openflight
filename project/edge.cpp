@@ -13,6 +13,7 @@ Edge::Edge(int a, int b, int c,bool d) {
     id = a;
     source = b;
     dest = c;
+    dis_cros = 0;
 }
 
 
