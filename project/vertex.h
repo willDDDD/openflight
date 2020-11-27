@@ -5,6 +5,7 @@
 #include "edge.h"
 #include "HSLA/PNG.h"
 #include "HSLA/HSLAPixel.h"
+using namespace cs225;
 using namespace std;
 
 
@@ -41,7 +42,6 @@ class Vertex {
 
         pair<int, int> findAirport(); //result should be int since pixel coor is represented by ints
 
-        // void drawAirline(cs225::PNG png, Vertex source, Vertex dest);
-        // void drawAirlines(cs225::PNG png);
+        void drawAirline(PNG png, Vertex source, Vertex dest);
         deque<Edge*> incid_edgs;
 };

@@ -59,4 +59,3 @@ What did you do today? Please indicate your work in this log.
     We solve the unknown typename problem due to crossing-reference
     We implement the graph using the Adjlist and BFS. 
     We deleted a unsued class: listnode
-    

@@ -17,13 +17,13 @@ int main() {
 		std::cout <<to_string(word.id) + " " <<to_string(word.source)+ " "<< to_string(word.dest) + " "<< std::endl;
 	}	
 
-	//test output image
-	// PNG png;
-	// png.readFromFile("world_map.png");
-	// Edge image(1,2,3);
-	// Vertex v1 = new Vertex(111, 20, 20, "champaign", 418); //id, lat, long, city, ITAT code
-	// Vertex v2 = new Vertex(112, 30, 30, "urbana", 614) // id, lat, long, city, ITAT code
-	// image.drawAirline(png, 111,112 );
-	// png.writeToFile("output_image_test.png");
+	// test output image
+	PNG png;
+	png.readFromFile("world_map.png");
+	Edge image(1,2,3);
+	Vertex v1 = new Vertex(111, 20, 20, "champaign", 418); //id, lat, long, city, ITAT code
+	Vertex v2 = new Vertex(112, 30, 30, "urbana", 614) // id, lat, long, city, ITAT code
+	image.drawAirline(png, 111,112 );
+	png.writeToFile("output_image_test.png");
 
 }

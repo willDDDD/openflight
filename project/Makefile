@@ -1,7 +1,7 @@
 # Reference: Final Project Demo Makefile
 
 EXENAME = finalproj
-OBJS = readFromFile.o main.o vertex.o edge.o graph.o
+OBJS = readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -46,6 +46,9 @@ edge.o: vertex.cpp edge.cpp
 
 graph.o: vertex.cpp edge.cpp graph.cpp
 	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp graph.cpp
+
+lodepng.o: HSLA/lodepng/lodepng.cpp
+	$(CXX) $(CXXFLAGS) HSLA/lodepng/lodepng.cpp
 
 test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
 	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test

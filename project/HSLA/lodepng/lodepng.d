@@ -1,4 +1,4 @@
-cs225/lodepng/lodepng.o: cs225/lodepng/lodepng.cpp \
-  cs225/lodepng/lodepng.h
+HSLA/lodepng/lodepng.o: HSLA/lodepng/lodepng.cpp \
+  HSLA/lodepng/lodepng.h
 
-cs225/lodepng/lodepng.h:
+HSLA/lodepng/lodepng.h:A
