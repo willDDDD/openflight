@@ -1,5 +1,5 @@
 #include "edge.h"
-#include "vertex.h"
+
 
 /**
  * Constructor of Edge

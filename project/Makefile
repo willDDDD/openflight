@@ -32,14 +32,24 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
+main.o: main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp
+
 readFromFile.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp 
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp
+
+vertex.o: edge.cpp vertex.cpp
+	$(CXX) $(CXXFLAGS) edge.cpp vertex.cpp
+
+edge.o: vertex.cpp listnode.cpp edge.cpp
+	$(CXX) $(CXXFLAGS) vertex.cpp listnode.cpp edge.cpp
 
 graph.o: vertex.cpp edge.cpp listnode.cpp graph.cpp
 	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp listnode.cpp graph.cpp
 
 test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
 	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test
+
 
 clean:
 	-rm -f *.o $(EXENAME) test

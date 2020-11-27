@@ -1,6 +1,6 @@
 #include "graph.h"
 
-void graph::buildhash(vector<Vertex> input) {
+void Graph::buildhash(vector<Vertex> input) {
     int maxsize = 0;
     for (auto i : input) {
         if (i.id > maxsize) {
@@ -13,7 +13,7 @@ void graph::buildhash(vector<Vertex> input) {
     }
 }
 
-void graph::build_icedge_listnod(vector<Edge> input) {
+void Graph::build_icedge_listnod(vector<Edge> input) {
     // for (auto i : input) {
     //     right_list.push_back(new Listnode(i.source,i.dest,i.id));
     // }

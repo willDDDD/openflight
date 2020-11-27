@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "vertex.h"
 #include "HSLA/HSLAPixel.h"
 #include "HSLA/PNG.h"
 #include "listnode.h"

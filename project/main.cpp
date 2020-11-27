@@ -3,6 +3,7 @@
 #include "readFromFile.h"
 #include "vertex.h"
 #include "edge.h"
+#include "listnode.h"
 
 
 int main() {

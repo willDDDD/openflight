@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <deque>
-#include "edge.h"
+#include "vertex.h"
+#include "listnode.h"
 using namespace std;
 
 

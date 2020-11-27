@@ -1,7 +1,7 @@
 #pragma once
+#include "vertex.h"
 #include "edge.h"
-
-class Listnode {
+class Listnode{
     public:
       Listnode(int,int,int);
       int source;
