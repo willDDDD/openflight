@@ -2,7 +2,9 @@
 #include <string>
 #include <deque>
 #include "vertex.h"
-#include "listnode.h"
+#include "edge.h"
+#include "HSLA/PNG.h"
+#include "HSLA/HSLAPixel.h"
 using namespace std;
 
 
@@ -37,5 +39,8 @@ class Vertex {
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
 
         pair<int, int> findAirport(); //result should be int since pixel coor is represented by ints
+
+        // void drawAirline(cs225::PNG png, Vertex source, Vertex dest);
+        // void drawAirlines(cs225::PNG png);
         deque<Edge*> incid_edgs;
 };

@@ -52,3 +52,5 @@ What did you do today? Please indicate your work in this log.
         How to implement shortest path?
         or change shortest path to spanning tree.
         how to deal with route.dat
+
+        we have "unknown type name" error after carefully checking the 

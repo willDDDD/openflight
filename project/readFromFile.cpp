@@ -84,5 +84,5 @@ Edge split_edge(string input) {
 	int id_ = (id == "NA") ? -1 : atoi(id.c_str());
 	int source_ = (source == "NA") ? -1 : atoi(source.c_str());
 	int dest_= (dest == "NA") ? -1 : atoi(dest.c_str());
-	return Edge(id_,source_,dest_);
+	return Edge(id_,source_,dest_,false);
 }

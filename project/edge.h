@@ -2,10 +2,7 @@
 #include <string>
 #include "HSLA/HSLAPixel.h"
 #include "HSLA/PNG.h"
-#include "listnode.h"
 using namespace std;
-using namespace cs225;
-
 
 /**
  * The Edge class
@@ -15,7 +12,7 @@ using namespace cs225;
  */
 class Edge {
     public:
-        Edge(int,int,int);
+        Edge(int,int,int,bool);
         /*
          * id the Airline ID
          */
@@ -29,13 +26,8 @@ class Edge {
          */
         int dest;
 
-
-        HSLAPixel edge_color;
-
-
-        void drawAirline(PNG png, Vertex source, Vertex dest);
-        void drawAirlines(PNG png);
-
-        Listnode* sou_;
-        Listnode* des_;
+        bool isInRightList;// true-right;false-middle
+        //HSLAPixel edge_color;
+        Edge * so_;
+        Edge * de_;
 };
