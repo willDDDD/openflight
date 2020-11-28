@@ -23,7 +23,7 @@ int main() {
 	png.readFromFile("world_map.png");
 	Edge_coloring image = Edge_coloring(png);//args
 	Vertex  v1 =  Vertex(111, 0, 0, "champaign", "418"); //id, lat, long, city, ITAT code
-	Vertex  v2 =  Vertex(112, 2048, 1025, "urbana", "614"); // id, lat, long, city, ITAT code
+	Vertex  v2 =  Vertex(112, 20, 20, "urbana", "614"); // id, lat, long, city, ITAT code
 	PNG result = image.drawAirline(png, v1, v2);
 	result.writeToFile("output_image_test.png");
 
