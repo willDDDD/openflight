@@ -59,3 +59,11 @@ What did you do today? Please indicate your work in this log.
     We solve the unknown typename problem due to crossing-reference
     We implement the graph using the Adjlist and BFS. 
     We deleted a unsued class: listnode
+
+2020/11/28
+
+    !!!after "make finalproj" and "./fianlproj" we met a "free() invalid pointer" error and then core dumped
+    I suspect it is a memory leak problem because we have not written any destructor yet.
+    In our main function, I try to draw a diagnoal white line. 
+    Once it is solved, we can keep on doing shortest path.
+    But how to implement shortest path?

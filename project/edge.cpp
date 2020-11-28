@@ -17,6 +17,9 @@ Edge::Edge(int a, int b, int c,bool d) {
 }
 
 Edge::Edge() {
+
+}
+Edge::~Edge() {
     
 }
 

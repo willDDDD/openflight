@@ -14,7 +14,7 @@ class Edge {
     public:
 
         Edge();
-        
+        ~Edge();    
 
         Edge(int,int,int,bool);
         
