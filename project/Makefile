@@ -1,8 +1,8 @@
 # Reference: Final Project Demo Makefile
 
 EXENAME = finalproj
-OBJS = readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o
-
+OBJS = edgeColoring.o readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o 
+ 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
@@ -19,6 +19,8 @@ ifneq ($(strip $(IS_EWS)),)
 ifeq ($(strip $(IS_CORRECT_CLANG)),)
 CLANG_VERSION_MSG = $(error $(ccred) On EWS, please run 'module load llvm/6.0.1' first when running CS225 assignments. $(ccend))
 endif
+        
+
 else
 CLANG_VERSION_MSG = $(warning $(ccyellow) Looks like you are not on EWS. Be sure to test on EWS before the deadline. $(ccend))
 endif
@@ -32,8 +34,8 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp
-	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp
+main.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp edgeColoring.cpp
+	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp edgeColoring.cpp
 
 readFromFile.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp 
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp
@@ -46,6 +48,9 @@ edge.o: vertex.cpp edge.cpp
 
 graph.o: vertex.cpp edge.cpp graph.cpp
 	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp graph.cpp
+
+# edgeColoring.o: vertex.cpp edge.cpp HSLA/HSLAPixel.cpp HSLA/PNG.cpp
+# 	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp HSLA/HSLAPixel.cpp HSLA/PNG.cpp
 
 lodepng.o: HSLA/lodepng/lodepng.cpp
 	$(CXX) $(CXXFLAGS) HSLA/lodepng/lodepng.cpp

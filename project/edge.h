@@ -12,19 +12,16 @@ using namespace std;
  */
 class Edge {
     public:
+
+        Edge();
+        
+
         Edge(int,int,int,bool);
-        /*
-         * id the Airline ID
-         */
-        int id;
-        /*
-         * source the Source Airport ID
-         */
+        
         int source;
-        /*
-         * dest the Destination Airport ID
-         */
         int dest;
+        int id;
+        
         
         int dis_cros; // 0-unexplored;1-discovery;2-cross
 

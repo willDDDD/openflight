@@ -16,5 +16,9 @@ Edge::Edge(int a, int b, int c,bool d) {
     dis_cros = 0;
 }
 
+Edge::Edge() {
+    
+}
+
 
 
