@@ -39,7 +39,7 @@ class Vertex {
          */
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
         bool is_explored;
-
+        
         
         deque<Edge*> incid_edgs;
 };

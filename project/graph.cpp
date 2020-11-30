@@ -53,9 +53,12 @@ void Graph::BFS() {
 }
 
 void Graph::BFS(Vertex V) {
+    count = 1;
+    vector<Vertex> temp;
     queue<Vertex> q;
     arrOfVertices[V.id].is_explored = true;
     q.push(V);
+    temp.push_back(V);
 
     while (!q.empty()) {
         V=q.front();
@@ -65,13 +68,44 @@ void Graph::BFS(Vertex V) {
             if (arrOfVertices[w].is_explored == false) {
                 arrOfVertices[w].is_explored = true;
                 arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros = 1;
-                q.push(arrOfVertices[w]);
+                q.push(arrOfVertices[w]); // the thing that get pushed is a pointer
+                count++;
+                if (count <= 10) {
+                    temp.push_back(arrOfVertices[w]); // the thing that get pushed is a pointer
+                }
             } else {
                 if (arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros == 0) {
                     arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros = 2;
                 }
             }
         }
-    } 
+    }
+    if (count <= 10) {
+        strong_con.push_back(temp);
+    }
 }
 
+vector<vector<Vertex>> Graph::getAllMinorityGroups() {
+    return strong_con;
+}
+
+vector<vector<Vertex>> Graph::getExactMinorityByNum(int num) {
+    vector<vector<Vertex>> temp;
+    for (auto & i : strong_con) {
+        if (i.size() == num) {
+            temp.push_back(i);
+        }
+    }
+    return temp;
+}
+
+vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
+    for (auto i : strong_con) {
+        for (auto & j : i) {
+            if (j.id == V.id) {
+                return i;
+            }
+        }
+    }
+    return vector<Vertex>();
+}

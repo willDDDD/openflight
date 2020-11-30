@@ -22,9 +22,17 @@ int main() {
 	PNG png;
 	png.readFromFile("world_map.png");
 	Edge_coloring image = Edge_coloring(png);//args
-	Vertex  v1 =  Vertex(111, 0, 0, "champaign", "418"); //id, lat, long, city, ITAT code
-	Vertex  v2 =  Vertex(112, 20, 20, "urbana", "614"); // id, lat, long, city, ITAT code
-	PNG result = image.drawAirline(png, v1, v2);
-	result.writeToFile("output_image_test.png");
+
+	//new york             
+	Vertex  v1 =  Vertex(111, 40, -74, "champaign", "418"); //id, lat, long, city, ITAT code 10S, 10E
+	
+	//shanghai             
+	Vertex  v2 =  Vertex(112, 31, 121, "urbana", "614"); // id, lat, long, city, ITAT code
+	pair<int, int> p1 = image.findAirportCoor(v1);
+	pair<int, int> p2 = image.findAirportCoor(v2);
+	cout<<"x: "<< p1.first<<" y: "<< p1.second<<endl;
+	cout<<"x: "<< p2.first<<" y: "<< p2.second<<endl;
+	 PNG result = image.drawAirline(png, v1, v2, 270); //hue 270 is purple
+	 result.writeToFile("output_image_test.png");
 
 }

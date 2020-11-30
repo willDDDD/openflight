@@ -67,3 +67,10 @@ What did you do today? Please indicate your work in this log.
     In our main function, I try to draw a diagnoal white line. 
     Once it is solved, we can keep on doing shortest path.
     But how to implement shortest path?
+
+    leak?
+    imporve drawAirline algorithm
+    https://en.wikipedia.org/wiki/Line_drawing_algorithm
+
+2020/11/30
+    Able to draw an airline on the map (world_map.png) given a source airport and destination airport. 

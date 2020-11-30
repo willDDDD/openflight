@@ -16,12 +16,9 @@ class Edge_coloring {
         
         pair<int, int> findAirportCoor(Vertex); //result should be int since pixel coor is represented by ints
         
-        PNG drawAirline(PNG png, Vertex source, Vertex dest);
+        PNG drawAirline(PNG png, Vertex source, Vertex dest, int hue);
 
 
-        Edge e;
-
-        Vertex v;
 
         PNG background;
 

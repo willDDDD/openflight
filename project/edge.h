@@ -22,7 +22,6 @@ class Edge {
         int dest;
         int id;
         
-        
         int dis_cros; // 0-unexplored;1-discovery;2-cross
 
         bool isInRightList;// true-right;false-middle
