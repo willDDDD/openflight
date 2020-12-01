@@ -25,6 +25,7 @@ Vertex::Vertex(int a, double b, double c, string d, string e) {
     city = d;
     IATA = e;
     is_explored = false;
+    isSeted = false;
 }
 
 

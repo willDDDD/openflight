@@ -1,6 +1,6 @@
 What did you do today? Please indicate your work in this log.
 
-2020/11/20
+2020/11/19
     create:
         route.dat airport.dat
         edge.cpp edge.h
@@ -12,7 +12,7 @@ What did you do today? Please indicate your work in this log.
         add new file: route.dat
 
 
-2020/11/21
+2020/11/20
     Apply the given template
     Able to print out the airport_sample
     create:
@@ -24,7 +24,7 @@ What did you do today? Please indicate your work in this log.
         get_data.cpp
 
 
-2020/11/22
+2020/11/21
     readFromFile can read airport and route
     Able to print the sample data in main function with split
     add documentations for functions
@@ -34,7 +34,7 @@ What did you do today? Please indicate your work in this log.
         discuss how to implement with adjacent list
         
 
-2020/11/24
+2020/11/23
     Able to find the matched airport on the world map
     implement a Hashtable
     create:
@@ -43,7 +43,7 @@ What did you do today? Please indicate your work in this log.
         implement the graph using desired algorithm
         draw the airline on the map using HSLA
 
-2020/11/25
+2020/11/24
     PROBLEMs:
         The edge class seems not working. How to draw the airline?
         How to adjust changes in Makefile? For example, which class need to create an object file
@@ -55,12 +55,12 @@ What did you do today? Please indicate your work in this log.
 
         we have "unknown type name" error
 
-2020/11/27
+2020/11/26
     We solve the unknown typename problem due to crossing-reference
     We implement the graph using the Adjlist and BFS. 
     We deleted a unsued class: listnode
 
-2020/11/28
+2020/11/27
 
     !!!after "make finalproj" and "./fianlproj" we met a "free() invalid pointer" error and then core dumped
     I suspect it is a memory leak problem because we have not written any destructor yet.
@@ -72,5 +72,22 @@ What did you do today? Please indicate your work in this log.
     imporve drawAirline algorithm
     https://en.wikipedia.org/wiki/Line_drawing_algorithm
 
-2020/11/30
+2020/11/29
     Able to draw an airline on the map (world_map.png) given a source airport and destination airport. 
+    Remaining problem: we cannot draw a opened line through the Paciffic Ocean. 
+
+
+2020/11/30
+    Write a function to color the airport but not tested yet
+    We can find the number of incid_edges of the vertex which has the maximum incid_edges.
+    This is used to change the HSLAPixel of the vertex color gradiently by the weight of the incident edges.
+    Debugged the build_hash() and build().
+    It turns out that our edge class has changed 
+    but our algorithm has not adapt the changes, which lead to a segfault.
+    Debugging the BFS() and BFS(Vertex).
+
+    TODO: 
+        Finsh debugging the BFS and we should output something.
+        Test the drawAirport.
+        
+
