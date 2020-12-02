@@ -6,18 +6,18 @@
 #include "vertex.h"
 #include "edge.h"
 
-
-int main() {
+int main()
+{
 	// std::cout << "airport:" << std::endl;
 	// std::vector<Vertex> vectorRepr = read_airport("airport_sample.dat");
 	// for (auto word : vectorRepr) {
-	// 	std::cout << word.city + " " <<to_string(word.id) + " "<<to_string(word.lat)+ " "<< to_string(word.longt)+ " "<< std::endl;	
+	// 	std::cout << word.city + " " <<to_string(word.id) + " "<<to_string(word.lat)+ " "<< to_string(word.longt)+ " "<< std::endl;
 	// }
 	// std::cout << "route" << std::endl;
 	// std::vector<Edge> v = read_route("route_sample.dat");
 	// for (auto word : v) {
 	// 	//std::cout <<to_string(word.id) + " " <<to_string(word.so_)+ " "<< to_string(word.de_) + " "<< std::endl;
-	// }	
+	// }
 
 	// test output image
 	// PNG png;
@@ -39,25 +39,23 @@ int main() {
 
 	// png.writeToFile("output_image_test.png");
 	 
-	 
 
 
 	vector<Vertex> vecOfV = read_airport("airport.dat");
 	vector<Edge> vecOfE = read_route("route.dat");
 	Graph g;
 	g.build(vecOfE, vecOfV);
-	// // for (auto i : vecOfV) {
-	// // 	std::cout << g.arrOfVertices[i.id].id << endl;
-	// // }
+	// for (auto i : vecOfV) {
+	// 	std::cout << g.arrOfVertices[i.id].id << endl;
+	// }
 
 	unsigned long num = 0;
 	for (auto i : vecOfV ) {
-		if(!g.arrOfVertices[i.id].incid_edgs.empty() && num<g.arrOfVertices[i.id].incid_edgs.size()){
+		if(num<g.arrOfVertices[i.id].incid_edgs.size()){
 			num=g.arrOfVertices[i.id].incid_edgs.size();
 		}
 	}
 	cout<< "max num incid_edges: " << num << endl;
-
 
 	// g.BFS();
 	// cout<<"pass"<<endl;
