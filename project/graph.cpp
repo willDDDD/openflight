@@ -3,7 +3,6 @@
 using namespace std;
 
 void Graph::buildhash(vector<Vertex> input) {
-    cout<< "buldhash first line  : " << input.size()<< endl;
     int maxsize = 0;
     for (auto i : input) {
         if (i.id > maxsize) {

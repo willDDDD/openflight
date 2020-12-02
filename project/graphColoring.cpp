@@ -25,7 +25,7 @@ pair<int, int> Graph_coloring::findAirportCoor(Vertex target)
     return result_pix;
 }
 
-void Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, double lum)
+void Graph_coloring::drawAirline(PNG & png, Vertex source, Vertex dest, double lum)
 {
     pair<int, int> source_coordinate = findAirportCoor(source);
     pair<int, int> dest_coordinate = findAirportCoor(dest);
@@ -39,7 +39,7 @@ void Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, double lum
     cout << "y2: " << y2 << endl;
 
     HSLAPixel color;
-    color.h = 360; //red
+    color.h = 300; //red
     color.s = 1;
     color.l = lum; // range from 25 to 75, the smaller the darker
     color.a = 1;
@@ -85,13 +85,13 @@ void Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, double lum
     }
 }
 
-void Graph_coloring::drawAirport(PNG png, Vertex airport, double lum)
+void Graph_coloring::drawAirport(PNG & png, Vertex airport, double lum)
 {
     pair<int, int> airport_coordinate = findAirportCoor(airport);
     int x = airport_coordinate.first;
     int y = airport_coordinate.second;
     HSLAPixel color;
-    color.h = 360;
+    color.h = 35;
     color.s = 1;
     color.l = lum;
     color.a = 1;
