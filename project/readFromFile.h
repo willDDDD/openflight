@@ -18,7 +18,7 @@ vector<Vertex> read_airport(const string & filename);
  * @param input the string to split
  * @return a Vertex for each line
  */
-Vertex split_vertex(string input);
+Vertex split_vertex(string &input);
 
 
 /** 
@@ -34,6 +34,6 @@ vector<Edge> read_route(const string &filename);
  * @param input the string to split
  * @return an Edge for each line
  */
-Edge split_edge(string input);
+Edge split_edge(string &input);
 
 

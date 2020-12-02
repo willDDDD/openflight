@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-void Graph::buildhash(vector<Vertex> input) {
+void Graph::buildhash(const vector<Vertex> &input) {
     cout<< "buldhash first line  : " << input.size()<< endl;
     int maxsize = 0;
     for (auto i : input) {
@@ -11,14 +11,14 @@ void Graph::buildhash(vector<Vertex> input) {
         }
     }
     arrOfVertices_size = maxsize;
-    arrOfVertices = new Vertex[maxsize];
+    arrOfVertices = new Vertex[maxsize*2];
     for (auto i : input) {
         arrOfVertices[i.id] = i;
         arrOfVertices[i.id].isSeted = true;
     }
 }
 
-void Graph::build(vector<Edge> input, vector<Vertex> v) {
+void Graph::build(const vector<Edge> &input, const vector<Vertex> &v) {
     buildhash(v);
     for (auto i : input) {
         bool c = true;
@@ -32,20 +32,16 @@ void Graph::build(vector<Edge> input, vector<Vertex> v) {
         }
     }
     for (unsigned long j = 0; j < list.size();j++) {
-        
-        arrOfVertices[list[j]->source].incid_edgs.push_back(new Edge(list[j]->id,list[j]->source,list[j]->dest, false));
-        
-        arrOfVertices[list[j]->dest].incid_edgs.push_back(new Edge(list[j]->id, list[j]->source,list[j]->dest, false));
-       
-        list[j]->so_ = arrOfVertices[list[j]->source].incid_edgs.back();
-        list[j]->de_ = arrOfVertices[list[j]->dest].incid_edgs.back();
-        arrOfVertices[list[j]->source].incid_edgs.back()->de_ = NULL;
-
-        arrOfVertices[list[j]->source].incid_edgs.back()->so_ = list[j];
-        
-        arrOfVertices[list[j]->dest].incid_edgs.back()->de_ = list[j];
-
-        arrOfVertices[list[j]->dest].incid_edgs.back()->so_ = NULL;
+        if (arrOfVertices[list[j]->source].isSeted == true && arrOfVertices[list[j]->dest].isSeted == true) {
+            arrOfVertices[list[j]->source].incid_edgs.push_back(new Edge(list[j]->id,list[j]->source,list[j]->dest, false));
+            arrOfVertices[list[j]->dest].incid_edgs.push_back(new Edge(list[j]->id, list[j]->dest,list[j]->source, false));
+            list[j]->so_ = arrOfVertices[list[j]->source].incid_edgs.back();
+            list[j]->de_ = arrOfVertices[list[j]->dest].incid_edgs.back();
+            arrOfVertices[list[j]->source].incid_edgs.back()->de_ = NULL;
+            arrOfVertices[list[j]->source].incid_edgs.back()->so_ = list[j];
+            arrOfVertices[list[j]->dest].incid_edgs.back()->so_ = list[j];
+            arrOfVertices[list[j]->dest].incid_edgs.back()->de_ = NULL;
+        }
     }
 }
 

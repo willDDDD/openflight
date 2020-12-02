@@ -105,3 +105,8 @@ void Graph_coloring::drawAirport(PNG png, Vertex airport, double lum)
         }
     }
 }
+
+double Graph_coloring::getLum(Vertex v) {
+    int currnum = v.incid_edgs.size();//num of incid_edges of v
+    return 0.25 + currnum / 248 * 0.5; //TODO
+}

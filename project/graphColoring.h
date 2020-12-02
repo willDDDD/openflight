@@ -20,6 +20,8 @@ class Graph_coloring {
 
         void drawAirport(PNG png, Vertex airport, double lum);
 
+        double getLum(Vertex v);
+
         PNG background;
 
 };

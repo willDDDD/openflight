@@ -18,8 +18,8 @@ class Graph {
       int count;
       vector<vector<Vertex>> strong_con;
    
-      void buildhash(vector<Vertex> input);
-      void build(vector<Edge> input, vector<Vertex> v);
+      void buildhash(const vector<Vertex> &input);
+      void build(const vector<Edge> & input, const vector<Vertex> &v);
       void BFS();
       void BFS(Vertex);
       vector<vector<Vertex>> getAllMinorityGroups();

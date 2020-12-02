@@ -16,6 +16,7 @@ vector<Vertex> read_airport(const string &filename)
 		while (getline(wordsFile, line))
 		{
 			string s = line;
+
 			ret.push_back(split_vertex(s));
 		}
 	}
@@ -33,13 +34,16 @@ vector<Edge> read_route(const string &filename)
 		while (getline(wordsFile, line))
 		{
 			string s = line;
-			ret.push_back(split_edge(s));
+			Edge temp = split_edge(s);
+			if (temp.id != -1) {
+				ret.push_back(temp);
+			}
 		}
 	}
 	return ret;
 }
 
-Vertex split_vertex(string input)
+Vertex split_vertex(string &input)
 {
 	int first = input.find(',');
 	string id = input.substr(0, first);
@@ -66,7 +70,7 @@ Vertex split_vertex(string input)
 	double longt_ = atof(longt.c_str());
 	return Vertex(id_, lat_, longt_, city, IATA);
 }
-Edge split_edge(string input) {
+Edge split_edge(string &input) {
 	int d1 = input.find(',');
 	input = input.substr(d1+1);
 	int first = input.find(',');
@@ -84,5 +88,8 @@ Edge split_edge(string input) {
 	int id_ = (id == "NA") ? -1 : atoi(id.c_str());
 	int source_ = (source == "NA") ? -1 : atoi(source.c_str());
 	int dest_= (dest == "NA") ? -1 : atoi(dest.c_str());
+	if (id_ == -1 || source_ == -1 || dest_ == -1) {
+		return Edge(-1,-1,-1,false);
+	}
 	return Edge(id_,source_,dest_,false);
 }
