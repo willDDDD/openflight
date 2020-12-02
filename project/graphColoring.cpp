@@ -25,7 +25,7 @@ pair<int, int> Graph_coloring::findAirportCoor(Vertex target)
     return result_pix;
 }
 
-PNG Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, int lum)
+void Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, double lum)
 {
     pair<int, int> source_coordinate = findAirportCoor(source);
     pair<int, int> dest_coordinate = findAirportCoor(dest);
@@ -38,7 +38,6 @@ PNG Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, int lum)
     cout << "y1: " << y1 << endl;
     cout << "y2: " << y2 << endl;
 
-    PNG image = png;
     HSLAPixel color;
     color.h = 360; //red
     color.s = 1;
@@ -50,7 +49,7 @@ PNG Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, int lum)
         for (int x = x1; x <= x2; x++)
         {
             int y = -((x - x1) * (y1 - y2) / (x2 - x1)) + y1;
-            HSLAPixel &pixel = image.getPixel(x, y);
+            HSLAPixel &pixel = png.getPixel(x, y);
             pixel = color;
         }
     }
@@ -60,7 +59,7 @@ PNG Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, int lum)
         for (int x = x1; x <= x2; x++)
         {
             int y = ((x - x1) * (y2 - y1) / (x2 - x1)) + y1;
-            HSLAPixel &pixel = image.getPixel(x, y);
+            HSLAPixel &pixel = png.getPixel(x, y);
             pixel = color;
         }
     }
@@ -70,7 +69,7 @@ PNG Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, int lum)
         for (int y = y1; y <= y2; y++)
         {
             int x = -((y - y1) * (x1 - x2) / (y2 - y1)) + x1;
-            HSLAPixel &pixel = image.getPixel(x, y);
+            HSLAPixel &pixel = png.getPixel(x, y);
             pixel = color;
         }
     }
@@ -80,20 +79,17 @@ PNG Graph_coloring::drawAirline(PNG png, Vertex source, Vertex dest, int lum)
         for (int y = y2; y <= y1; y++)
         {
             int x = ((y2 - y) * (x1 - x2) / (y2 - y1)) + x2;
-            HSLAPixel &pixel = image.getPixel(x, y);
+            HSLAPixel &pixel = png.getPixel(x, y);
             pixel = color;
         }
     }
-
-    return image;
 }
 
-PNG Graph_coloring::drawAirport(PNG png, Vertex airport, int lum)
+void Graph_coloring::drawAirport(PNG png, Vertex airport, double lum)
 {
     pair<int, int> airport_coordinate = findAirportCoor(airport);
     int x = airport_coordinate.first;
     int y = airport_coordinate.second;
-    PNG image = png;
     HSLAPixel color;
     color.h = 360;
     color.s = 1;
@@ -104,9 +100,8 @@ PNG Graph_coloring::drawAirport(PNG png, Vertex airport, int lum)
     {
         for (int j = y - 1; j <= y + 1; j++)
         {
-            HSLAPixel &pixel = image.getPixel(i, j);
+            HSLAPixel &pixel = png.getPixel(i, j);
             pixel = color;
         }
     }
-    return image;
 }

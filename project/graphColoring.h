@@ -16,9 +16,9 @@ class Graph_coloring {
         
         pair<int, int> findAirportCoor(Vertex); //result should be int since pixel coor is represented by ints
         
-        PNG drawAirline(PNG png, Vertex source, Vertex dest, int lum);
+        void drawAirline(PNG png, Vertex source, Vertex dest, double lum);
 
-        PNG drawAirport(PNG png, Vertex airport, int lum);
+        void drawAirport(PNG png, Vertex airport, double lum);
 
         PNG background;
 
