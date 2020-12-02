@@ -91,3 +91,11 @@ What did you do today? Please indicate your work in this log.
         Test the drawAirport.
         
 
+2020/12/1
+    Wrote a function to pick the luminance for the airport points.
+    Read the data file in to our data structure and tested
+    Test BFS
+
+    TODO:
+        Further debugging the data sturcture
+        Prepare for the mid-project checking
