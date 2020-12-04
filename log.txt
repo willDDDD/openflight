@@ -99,3 +99,22 @@ What did you do today? Please indicate your work in this log.
     TODO:
         Further debugging the data sturcture
         Prepare for the mid-project checking
+
+2020/12/3
+    Debugged BFS. There is one line of route.dat:
+    -------------------------------------------
+        IL,10121,PKN,3910,PKN,3910,,0,AT7
+    -------------------------------------------
+    which source and dest are the same which casue a segfault
+    So we delete this line and BFS passed.
+
+    Changed our project goals
+    Some algorithms are misunderstood. 
+    
+
+    TODO:
+        Shortest Path Algorithm
+
+
+
+    

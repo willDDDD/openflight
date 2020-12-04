@@ -3,7 +3,7 @@
 using namespace std;
 
 void Graph::buildhash(const vector<Vertex> &input) {
-    cout<< "buldhash first line  : " << input.size()<< endl;
+    //cout<< "buldhash first line  : " << input.size()<< endl;
     int maxsize = 0;
     for (auto i : input) {
         if (i.id > maxsize) {
@@ -47,7 +47,7 @@ void Graph::build(const vector<Edge> &input, const vector<Vertex> &v) {
 
 void Graph::BFS() {
     component = 0;
-    cout<< "BFS() 1" <<endl;
+    //cout<< "BFS() 1" <<endl;
     for (unsigned i = 0; i < arrOfVertices_size; i++) {
         if (arrOfVertices[i].isSeted == true) {
             arrOfVertices[i].is_explored = false;
@@ -58,7 +58,7 @@ void Graph::BFS() {
     }
     for (unsigned i = 0; i < arrOfVertices_size; i++) {
         if (arrOfVertices[i].isSeted == true && arrOfVertices[i].is_explored == false) {
-            cout<< "BFS() 2" <<endl;
+            //cout<< "BFS() 2" <<endl;
             BFS(arrOfVertices[i]);
             component++;
         }
@@ -66,7 +66,7 @@ void Graph::BFS() {
 }
 
 void Graph::BFS(Vertex V) {
-    cout<< "BFS(Vertex V) 1" <<endl;
+    //cout<< "BFS(Vertex V) 1" <<endl;
     count = 1;
     vector<Vertex> temp;
     queue<Vertex> q;
@@ -79,11 +79,13 @@ void Graph::BFS(Vertex V) {
         q.pop();
         for (size_t m = 0; m < arrOfVertices[V.id].incid_edgs.size(); m++) {
             int w = arrOfVertices[V.id].incid_edgs[m]->dest;
+            cout << arrOfVertices[w].id << endl;
+            
             if (arrOfVertices[w].is_explored == false) {
                 arrOfVertices[w].is_explored = true;
-                cout << arrOfVertices[w].id << endl;
                 arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros = 1;
                 q.push(arrOfVertices[w]); // the thing that get pushed is a pointer
+                cout << "hello 1" << endl;
                 count++;
                 if (count <= 10) {
                     temp.push_back(arrOfVertices[w]); // the thing that get pushed is a pointer
@@ -91,6 +93,7 @@ void Graph::BFS(Vertex V) {
             } else {
                 if (arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros == 0) {
                     arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros = 2;
+                    cout << "hello 3" << endl;
                 }
             }
         }

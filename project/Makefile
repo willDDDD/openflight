@@ -1,7 +1,7 @@
 # Reference: Final Project Demo Makefile
 
 EXENAME = finalproj
-OBJS = graphColoring.o readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o 
+OBJS = graphDrawing.o readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o 
  
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -34,8 +34,8 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp graphColoring.cpp
-	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp graphColoring.cpp
+main.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp graphDrawing.cpp
+	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp graphDrawing.cpp
 
 readFromFile.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp 
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp
@@ -49,7 +49,7 @@ edge.o: vertex.cpp edge.cpp
 graph.o: vertex.cpp edge.cpp graph.cpp
 	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp graph.cpp
 
-# graphColoring.o: vertex.cpp edge.cpp HSLA/HSLAPixel.cpp HSLA/PNG.cpp
+# graphDrawing.o: vertex.cpp edge.cpp HSLA/HSLAPixel.cpp HSLA/PNG.cpp
 # 	$(CXX) $(CXXFLAGS) vertex.cpp edge.cpp HSLA/HSLAPixel.cpp HSLA/PNG.cpp
 
 lodepng.o: HSLA/lodepng/lodepng.cpp

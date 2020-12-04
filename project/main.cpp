@@ -2,7 +2,7 @@
 #include <vector>
 #include "readFromFile.h"
 #include "graph.h"
-#include "graphColoring.h"
+#include "graphDrawing.h"
 #include "vertex.h"
 #include "edge.h"
 
@@ -57,7 +57,7 @@ int main()
 	}
 	cout<< "max num incid_edges: " << num << endl;
 
-	// g.BFS();
+	g.BFS();
 	// cout<<"pass"<<endl;
 	// cout<<"g component have : "<<g.component<<endl;
 	// cout<<"get minority group by  "<< g.getExactMinorityByNum(2).size()<<endl;
