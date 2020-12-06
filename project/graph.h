@@ -6,6 +6,7 @@
 #include <vector>
 #include <deque>
 #include <queue>
+#include <map>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class Graph {
       int component;
       int count;
       vector<vector<Vertex>> strong_con;
+      vector<Vertex> vec_of_ver;
    
       void buildhash(const vector<Vertex> &input);
       void build(const vector<Edge> & input, const vector<Vertex> &v);
@@ -25,4 +27,7 @@ class Graph {
       vector<vector<Vertex>> getAllMinorityGroups();
       vector<vector<Vertex>> getExactMinorityByNum(unsigned long);
       vector<Vertex> getExactMinorityByV(Vertex);
+      // vector<Vertex> shortestPath(Vertex);
+      // void buildHeap();
+      
 };

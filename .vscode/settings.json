@@ -60,5 +60,11 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "list": "cpp"
-    }
+    },
+    "extensions.ignoreRecommendations": true,
+    "files.autoSave": "off",
+    "typescript.tsc.autoDetect": "off",
+    "npm.autoDetect": "off",
+    "debug.allowBreakpointsEverywhere": true,
+    "html.autoClosingTags": false
 }

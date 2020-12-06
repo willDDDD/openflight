@@ -19,6 +19,7 @@ void Graph::buildhash(const vector<Vertex> &input) {
 }
 
 void Graph::build(const vector<Edge> &input, const vector<Vertex> &v) {
+    //vec_of_ver = v;
     buildhash(v);
     for (auto i : input) {
         bool c = true;
@@ -127,3 +128,19 @@ vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
     }
     return vector<Vertex>();
 }	
+
+// vector<Vertex> Graph::shortestPath(Vertex source) {
+//     map<int, int> dist;
+//     map<int, int> pre;
+//     for (auto& v : vec_of_ver) {
+//         dist[v.id] = -1;
+//         pre[v.id] = -2;
+//     }
+//     dist[source.id] = 0;
+//     buildHeap();
+    
+// }
+
+// void buildHeap() {
+    
+// }

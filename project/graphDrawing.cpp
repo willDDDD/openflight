@@ -25,10 +25,11 @@ pair<int, int> Graph_coloring::findAirportCoor(Vertex target)
     return result_pix;
 }
 
-void Graph_coloring::drawAirline(PNG & png, Vertex source, Vertex dest, double lum)
+void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lum)
 {
     pair<int, int> source_coordinate = findAirportCoor(source);
     pair<int, int> dest_coordinate = findAirportCoor(dest);
+    //coordinate on picture
     int x1 = source_coordinate.first;
     int y1 = source_coordinate.second;
     int x2 = dest_coordinate.first;
@@ -46,6 +47,7 @@ void Graph_coloring::drawAirline(PNG & png, Vertex source, Vertex dest, double l
 
     if (x1 < x2 && y1 > y2)
     {
+
         for (int x = x1; x <= x2; x++)
         {
             int y = -((x - x1) * (y1 - y2) / (x2 - x1)) + y1;
@@ -56,16 +58,34 @@ void Graph_coloring::drawAirline(PNG & png, Vertex source, Vertex dest, double l
 
     if (x1 < x2 && y1 < y2)
     {
-        for (int x = x1; x <= x2; x++)
+        if (x2 - x1 > 1024)
         {
-            int y = ((x - x1) * (y2 - y1) / (x2 - x1)) + y1;
-            HSLAPixel &pixel = png.getPixel(x, y);
-            pixel = color;
+            int x_diff = 2048 - x2 + x1;
+            int y_diff = y2 - y1;
+            int coor = y2 - (2048 - x2) * 1.0 / x_diff * y_diff;
+            cout<<"fuck"<<endl;
+            for (int y = y1; y <= coor; y++)
+            {
+                cout<<"it"<<endl;
+                int x = (coor - y) * x1 / (coor - y1);
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
+        }
+        else
+        {
+            for (int x = x1; x <= x2; x++)
+            {
+                int y = ((x - x1) * (y2 - y1) / (x2 - x1)) + y1;
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
         }
     }
 
     if (x1 > x2 && y1 < y2)
     {
+
         for (int y = y1; y <= y2; y++)
         {
             int x = -((y - y1) * (x1 - x2) / (y2 - y1)) + x1;
@@ -76,6 +96,7 @@ void Graph_coloring::drawAirline(PNG & png, Vertex source, Vertex dest, double l
 
     if (x1 > x2 && y1 > y2)
     {
+
         for (int y = y2; y <= y1; y++)
         {
             int x = ((y2 - y) * (x1 - x2) / (y2 - y1)) + x2;
@@ -85,7 +106,7 @@ void Graph_coloring::drawAirline(PNG & png, Vertex source, Vertex dest, double l
     }
 }
 
-void Graph_coloring::drawAirport(PNG & png, Vertex airport, double lum)
+void Graph_coloring::drawAirport(PNG &png, Vertex airport, double lum)
 {
     pair<int, int> airport_coordinate = findAirportCoor(airport);
     int x = airport_coordinate.first;
@@ -106,7 +127,8 @@ void Graph_coloring::drawAirport(PNG & png, Vertex airport, double lum)
     }
 }
 
-double Graph_coloring::getLum(Vertex v) {
-    int currnum = v.incid_edgs.size();//num of incid_edges of v
+double Graph_coloring::getLum(Vertex v)
+{
+    int currnum = v.incid_edgs.size(); //num of incid_edges of v
     return 0.25 + currnum / 248 * 0.5; //TODO
 }

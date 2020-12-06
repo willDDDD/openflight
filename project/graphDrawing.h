@@ -4,6 +4,7 @@
 #include "HSLA/PNG.h"
 #include "vertex.h"
 #include "edge.h"
+#include <cmath>
 using namespace std;
 using namespace cs225;
 
@@ -24,4 +25,7 @@ class Graph_coloring {
 
         PNG background;
 
+
+
 };
+
