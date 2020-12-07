@@ -19,6 +19,7 @@ class Graph {
       int count;
       vector<vector<Vertex>> strong_con;
       vector<Vertex> vec_of_ver;
+      map<int, int> dist;
    
       void buildhash(const vector<Vertex> &input);
       void build(const vector<Edge> & input, const vector<Vertex> &v);
