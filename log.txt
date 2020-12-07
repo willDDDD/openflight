@@ -115,6 +115,26 @@ What did you do today? Please indicate your work in this log.
     TODO:
         Shortest Path Algorithm
 
+2020/12/5
+    Rename the graph_coloring to graphDrawing to avoid ambiguity.
+    Try to draw the airline that cross the Paciffic Ocean, not done yet.
+    Start to implement the Dijkstra's algorithm SSSP.
+    Create a new class: priorityQueue.
+    
+    TODO:
+        implement Dijkstra's algorithm
+        debug the cross border airline drawing
+
+2020/12/6
+    We are able to draw the airline that cross the Paciffic Ocean
+    Then we draw the picture using database route.dat
+    The running time is relatively fast so we assume that our data sturcture perform well
+
+    TODO:
+        finish the priorityQueue
+        implement Dijkstra's algorithm
+        write testcases for the existed functions
+
 
 
     
