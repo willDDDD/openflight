@@ -23,19 +23,28 @@ int main()
 	PNG png;
 	png.readFromFile("world_map.png");
 	Graph_coloring image = Graph_coloring(png);//args
-
+	vector<Vertex> vecOfV = read_airport("airport.dat");
+	vector<Edge> vecOfE = read_route("route.dat");
+	Graph g;
+	g.build(vecOfE, vecOfV);
+	for (auto e : vecOfE) {
+		Vertex dest = g.arrOfVertices[e.dest];
+		Vertex source = g.arrOfVertices[e.source];
+		image.drawAirline(png, source, dest, 270);
+	}
 	//new york             
-	Vertex  v1 =  Vertex(111, 40, -150, "new york", "418"); //id, lat, long, city, ITAT code 10S, 10E
+	// Vertex  v1 =  Vertex(111, 34, -118, "LA", "418"); //id, lat, long, city, ITAT code 10S, 10E             
+	// Vertex  v2 =  Vertex(112, 18, 72,"MM", "614"); // id, lat, long, city, ITAT code
+	// Vertex  v3 =  Vertex(112, 50, -150,"shanghai", "614"); // id, lat, long, city, ITAT code
+	// Vertex  v4 =  Vertex(112, 0, 150,"shanghai", "614"); // id, lat, long, city, ITAT code
+	// pair<int, int> p1 = image.findAirportCoor(v1);
+	// pair<int, int> p2 = image.findAirportCoor(v2);
+	// cout<<"x: "<< p1.first<<" y: "<< p1.second<<endl;
+	// cout<<"x: "<< p2.first<<" y: "<< p2.second<<endl;
+	// image.drawAirport(png,v1,0.5);
+	// image.drawAirport(png,v2,0.5);
+	// image.drawAirline(png, v1, v2, 270); //hue 270 is purple
 	
-	//shanghai             
-	Vertex  v2 =  Vertex(112, 31, 150, "shanghai", "614"); // id, lat, long, city, ITAT code
-	pair<int, int> p1 = image.findAirportCoor(v1);
-	pair<int, int> p2 = image.findAirportCoor(v2);
-	cout<<"x: "<< p1.first<<" y: "<< p1.second<<endl;
-	cout<<"x: "<< p2.first<<" y: "<< p2.second<<endl;
-	image.drawAirport(png,v1,0.5);
-	image.drawAirport(png,v2,0.5);
-	image.drawAirline(png, v1, v2, 270); //hue 270 is purple
 
 	png.writeToFile("output_image_test.png");
 	 

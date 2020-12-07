@@ -1,9 +1,13 @@
 #pragma once
 #include <map>
 #include "vertex.h"
+#include <vector>
 #define VECTOR_MAX_SIZE 14111
 #define HEAP_MAX_SIZE 16385
 
+/*
+ * Reference: xinlong3 lab_heap
+ */
 class priorityQueue {
     private:
         /*
@@ -19,7 +23,7 @@ class priorityQueue {
          * the current size of arr_for_heap_
          */
         unsigned afhSize;
-        unsigned currentEnd;
+        unsigned currentHeapSize;
 
         /*
          * resize arr_for_heap_
@@ -36,10 +40,11 @@ class priorityQueue {
         unsigned findParent(unsigned currIdx);
         void heapifyUp(unsigned currIdx);
         void heapifyDown(unsigned currIdx);
+        void swap(unsigned first, unsigned sec);
         /*
          * Returns the child's airport id of the highest priority.
          */
-        int highestPriorityChild();
+        int highestPriorityChild(unsigned currIdx);
     public:
         /*
          * This function is supposed to be called only once per instance

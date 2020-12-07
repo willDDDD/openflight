@@ -34,10 +34,6 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
     int y1 = source_coordinate.second;
     int x2 = dest_coordinate.first;
     int y2 = dest_coordinate.second;
-    cout << "x1: " << x1 << endl;
-    cout << "x2: " << x2 << endl;
-    cout << "y1: " << y1 << endl;
-    cout << "y2: " << y2 << endl;
 
     HSLAPixel color;
     color.h = 300; //red
@@ -47,13 +43,29 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
 
     if (x1 < x2 && y1 > y2)
     {
-
-        for (int x = x1; x <= x2; x++)
-        {
-            int y = -((x - x1) * (y1 - y2) / (x2 - x1)) + y1;
-            HSLAPixel &pixel = png.getPixel(x, y);
-            pixel = color;
+        if (x2 - x1 > 1024) {
+            int x_diff = 2048 - x2 + x1;
+            int y_diff = y1 - y2;
+            int coor = y2 + (2048 - x2) * 1.0 / x_diff * y_diff;
+            for (int y = coor + 1; y < y1; y++) {
+                int x = (coor - y) * x1 * 1.0 / (coor - y1);
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
+            for (int y = y2; y < coor; y++) {
+                int x = (coor - y) * (2048 - x2) * 1.0/ (coor - y2);
+                HSLAPixel &pixel = png.getPixel(2048 - x, y);
+                pixel = color;
+            }
+        } else {
+            for (int x = x1; x <= x2; x++)
+            {
+                int y = -((x - x1) * (y1 - y2) * 1.0 / (x2 - x1)) + y1;
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
         }
+        
     }
 
     if (x1 < x2 && y1 < y2)
@@ -63,12 +75,17 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             int x_diff = 2048 - x2 + x1;
             int y_diff = y2 - y1;
             int coor = y2 - (2048 - x2) * 1.0 / x_diff * y_diff;
-            cout<<"fuck"<<endl;
-            for (int y = y1; y <= coor; y++)
+            for (int y = y1; y < coor; y++)
             {
-                cout<<"it"<<endl;
-                int x = (coor - y) * x1 / (coor - y1);
+                int x = (coor - y) * x1 * 1.0/ (coor - y1);
                 HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
+            for (int y = coor + 1; y < y2; y++)
+            {
+               
+                int x = (coor - y) * (2048 - x2) * 1.0/ (coor - y2);
+                HSLAPixel &pixel = png.getPixel(2048 - x, y);
                 pixel = color;
             }
         }
@@ -76,7 +93,7 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
         {
             for (int x = x1; x <= x2; x++)
             {
-                int y = ((x - x1) * (y2 - y1) / (x2 - x1)) + y1;
+                int y = ((x - x1) * (y2 - y1) * 1.0/ (x2 - x1)) + y1;
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
@@ -85,23 +102,59 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
 
     if (x1 > x2 && y1 < y2)
     {
-
-        for (int y = y1; y <= y2; y++)
-        {
-            int x = -((y - y1) * (x1 - x2) / (y2 - y1)) + x1;
-            HSLAPixel &pixel = png.getPixel(x, y);
-            pixel = color;
+        if (x1 - x2 > 1024) {
+            int x_diff = 2048 - x1 + x2;
+            int y_diff = y2 - y1;
+            int coor = y1 + (2048 - x1) * 1.0 / x_diff * y_diff;
+            for (int y = coor  + 1; y < y2; y++) {
+                int x = (coor - y) * x2 / (coor - y2);
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
+            for (int y = y1; y < coor; y++) {
+                int x = (coor - y) * (2048 - x1)* 1.0 / (coor - y1);
+                HSLAPixel &pixel = png.getPixel(2048 - x, y);
+                pixel = color;
+            }
+        } else {
+            for (int y = y1; y <= y2; y++)
+            {
+                int x = -((y - y1) * (x1 - x2)* 1.0 / (y2 - y1)) + x1;
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
         }
+        
     }
 
     if (x1 > x2 && y1 > y2)
     {
-
-        for (int y = y2; y <= y1; y++)
-        {
-            int x = ((y2 - y) * (x1 - x2) / (y2 - y1)) + x2;
-            HSLAPixel &pixel = png.getPixel(x, y);
-            pixel = color;
+        if (x1 - x2 > 1024) {
+            int x_diff = 2048 - x1 + x2;
+            int y_diff = y1 - y2;
+            int coor = y1 - (2048 - x1) * 1.0 / x_diff * y_diff;
+            for (int y = y2; y < coor; y++)
+            {
+                
+                int x = (coor - y) * x2 * 1.0/ (coor - y2);
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
+            for (int y = coor + 1; y < y1; y++)
+            {
+               
+                int x = (coor - y) * (2048 - x1) * 1.0/ (coor - y1);
+                HSLAPixel &pixel = png.getPixel(2048 - x, y);
+                pixel = color;
+            }
+        }
+        else {
+            for (int y = y2; y <= y1; y++)
+            {
+                int x = ((y2 - y) * (x1 - x2)* 1.0 / (y2 - y1)) + x2;
+                HSLAPixel &pixel = png.getPixel(x, y);
+                pixel = color;
+            }
         }
     }
 }
@@ -132,3 +185,4 @@ double Graph_coloring::getLum(Vertex v)
     int currnum = v.incid_edgs.size(); //num of incid_edges of v
     return 0.25 + currnum / 248 * 0.5; //TODO
 }
+
