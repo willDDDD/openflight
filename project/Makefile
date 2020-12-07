@@ -1,6 +1,7 @@
 # Reference: Final Project Demo Makefile
 
 EXENAME = finalproj
+
 OBJS = graphDrawing.o readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o 
  
 CXX = clang++
@@ -55,8 +56,8 @@ graph.o: vertex.cpp edge.cpp graph.cpp
 lodepng.o: HSLA/lodepng/lodepng.cpp
 	$(CXX) $(CXXFLAGS) HSLA/lodepng/lodepng.cpp
 
-test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
-	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test
+test: output_msg catch/catchmain.cpp tests/tests.cpp edge.cpp vertex.cpp graph.cpp
+	$(LD) catch/catchmain.cpp tests/tests.cpp edge.cpp vertex.cpp graph.cpp $(LDFLAGS) -o test
 
 
 clean:
