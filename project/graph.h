@@ -3,6 +3,7 @@
 //hash table, seperate chaining, link list
 #include "vertex.h"
 #include "edge.h"
+// #include "priorityQueue.h"
 #include <vector>
 #include <deque>
 #include <queue>
@@ -19,10 +20,6 @@ class Graph {
       int count;
       vector<vector<Vertex>> strong_con;
       vector<Vertex> vec_of_ver;
-      /*
-       * This map is reserved for priorityQueue's constructor
-       */
-      map<int, int> dist;
    
       void buildhash(const vector<Vertex> &input);
       void build(const vector<Edge> & input, const vector<Vertex> &v);
@@ -31,6 +28,6 @@ class Graph {
       vector<vector<Vertex>> getAllMinorityGroups();
       vector<vector<Vertex>> getExactMinorityByNum(unsigned long);
       vector<Vertex> getExactMinorityByV(Vertex);
-      // vector<Vertex> shortestPath(Vertex);
+      vector<Vertex> shortestPath(Vertex);
       // void buildHeap();
 };

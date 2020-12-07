@@ -18,7 +18,11 @@ class priorityQueue {
         /*
          * The array that represents the heap
          */
-        int* arr_for_heap_;
+        // int* arr_for_heap_;
+        /*
+         * 
+         */
+        pair<int, int> arr_for_heap_;
         /*
          * the current size of arr_for_heap_
          */
@@ -46,10 +50,6 @@ class priorityQueue {
         void heapifyUp(unsigned currIdx);
         void heapifyDown(unsigned currIdx);
         void swap(unsigned first, unsigned sec);
-        /*
-         * See what is now at the top of the heap
-         */
-        int peek() const;
         bool empty() const;
         /*
          * Returns the index of child of the highest priority.
@@ -71,4 +71,8 @@ class priorityQueue {
         priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map);
         void updateDistance(int id, int newDis);
         int removeMin();
+        /*
+         * See what is now at the top of the heap
+         */
+        int peek() const;
 };

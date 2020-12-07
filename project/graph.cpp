@@ -137,7 +137,8 @@ vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
 //         pre[v.id] = -2;
 //     }
 //     dist[source.id] = 0;
-//     buildHeap();
+//     // buildHeap();
+//     // priorityQueue pq(vec_of_ver, dist);
     
 // }
 

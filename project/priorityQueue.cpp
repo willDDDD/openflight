@@ -8,6 +8,7 @@ priorityQueue::priorityQueue(const vector<Vertex> & vec, const map<int, int> & d
     arr_for_heap_ = new int[HEAP_MAX_SIZE];
     arr_for_heap_[0] = -100;
     afhSize = 0;
+    buildHeap(vec);
 }
 
 void priorityQueue::resizeArray() {
