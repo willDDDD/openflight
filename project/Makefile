@@ -35,8 +35,8 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp graphDrawing.cpp
-	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp graphDrawing.cpp
+main.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp graphDrawing.cpp priorityQueue.cpp
+	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp graphDrawing.cpp priorityQueue.cpp
 
 readFromFile.o: main.cpp readFromFile.cpp vertex.cpp edge.cpp 
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp vertex.cpp edge.cpp

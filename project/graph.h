@@ -19,6 +19,9 @@ class Graph {
       int count;
       vector<vector<Vertex>> strong_con;
       vector<Vertex> vec_of_ver;
+      /*
+       * This map is reserved for priorityQueue's constructor
+       */
       map<int, int> dist;
    
       void buildhash(const vector<Vertex> &input);
@@ -30,5 +33,4 @@ class Graph {
       vector<Vertex> getExactMinorityByV(Vertex);
       // vector<Vertex> shortestPath(Vertex);
       // void buildHeap();
-      
 };

@@ -23,6 +23,10 @@ class priorityQueue {
          * the current size of arr_for_heap_
          */
         unsigned afhSize;
+        /*
+         * the current number of elements in the heap
+         * excluding the thing on the 0th index
+         */
         unsigned currentHeapSize;
 
         /*
@@ -33,6 +37,7 @@ class priorityQueue {
         bool hasAChild(unsigned currIdx);
         /*
          * Compare the first distance to the second distance
+         * break tie by returning false
          */
         bool firstShorterThanSec(int firstId, int secondId);
         unsigned findLeftChild(unsigned currIdx);
@@ -42,12 +47,28 @@ class priorityQueue {
         void heapifyDown(unsigned currIdx);
         void swap(unsigned first, unsigned sec);
         /*
-         * Returns the child's airport id of the highest priority.
+         * See what is now at the top of the heap
          */
-        int highestPriorityChild(unsigned currIdx);
+        int peek() const;
+        bool empty() const;
+        /*
+         * Returns the index of child of the highest priority.
+         */
+        unsigned highestPriorityChild(unsigned currIdx);
+        /*
+         * The helper function for firstShorterThanSec()
+         * break tie by returning false
+         */
+        bool fSTHelper(int dist1, int dist2);
+        /*
+         * find the index of the airport id in the heap
+         */
+        unsigned findIndex(int id);
     public:
         /*
          * This function is supposed to be called only once per instance
          */
         priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map);
+        void updateDistance(int id, int newDis);
+        int removeMin();
 };
