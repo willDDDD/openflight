@@ -59,15 +59,33 @@ TEST_CASE("Graph: test getExactMinorityByV") {
     g.BFS();
     REQUIRE(1 == g.getExactMinorityByV(vecOfV[0]).size());
 }
+
 TEST_CASE("Graph drawing: test findAirportCoor") {
-    
+    PNG png;
+    png.readFromFile("world_map.png");
+    Graph_coloring image = Graph_coloring(png);//args
+
+
+    Vertex  v1 =  Vertex(111, 50, 100, "city 1", "abc"); //id, lat, long, city, ITAT code 10S, 10E             
+    Vertex  v2 =  Vertex(112, -50, -100,"city 2", "xyz"); // id, lat, long, city, ITAT code
+
+    pair<int, int> p1 = image.findAirportCoor(v1);
+    REQUIRE(100 == p1.first);
+    REQUIRE(100 == p1.second);
+
+    pair<int, int> p2 = image.findAirportCoor(v2);
+    REQUIRE(100 == p2.first);
+    REQUIRE(100 == p2.second);
+
+    image.drawAirport(png,v1,0.5);
+    REQUIRE(0.5 == png.getPixel(100,200).l);
+
+    image.drawAirport(png,v2,0.5);
+    REQUIRE(0.5 == png.getPixel(100,200).l);
+    image.drawAirline(png, v1, v2, 270); //hue 270 is purple
+    REQUIRE(0.5 == png.getPixel(100,200).l);
 }
-TEST_CASE("Graph drawing: test drawAirport") {
-    
-}
-TEST_CASE("Graph drawing: test drawAirline") {
-    
-}
+
 
 TEST_CASE("test priorityQueue constructor") {
     

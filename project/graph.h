@@ -8,6 +8,7 @@
 #include <deque>
 #include <queue>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -20,7 +21,8 @@ class Graph {
       int count;
       vector<vector<Vertex>> strong_con;
       vector<Vertex> vec_of_ver;
-   
+
+      void addVertex(Vertex);
       void buildhash(const vector<Vertex> &input);
       void build(const vector<Edge> & input, const vector<Vertex> &v);
       void BFS();
@@ -28,6 +30,7 @@ class Graph {
       vector<vector<Vertex>> getAllMinorityGroups();
       vector<vector<Vertex>> getExactMinorityByNum(unsigned long);
       vector<Vertex> getExactMinorityByV(Vertex);
-      vector<Vertex> shortestPath(Vertex);
+      vector<int> shortestPath(Vertex,Vertex);
       // void buildHeap();
+      int getDistance(Edge *);
 };

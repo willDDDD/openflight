@@ -73,7 +73,7 @@ class priorityQueue {
          * This function is supposed to be called only once per instance
          */
         priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map);
-        void updateDistance(int id, int newDis);
+        void updateDistance(const map<int, int> & dist_map, int id, int newDis);
         int removeMin();
         /*
          * See what is now at the top of the heap

@@ -1,5 +1,7 @@
 #include "graph.h"
 #include <iostream>
+#include "limits.h"
+#include <cmath>
 using namespace std;
 
 void Graph::buildhash(const vector<Vertex> &input) {
@@ -120,18 +122,56 @@ vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
     return vector<Vertex>();
 }	
 
-// vector<Vertex> Graph::shortestPath(Vertex source) {
-//     map<int, int> dist;
-//     map<int, int> pre;
-//     for (auto& v : vec_of_ver) {
-//         dist[v.id] = -1;
-//         pre[v.id] = -2;
-//     }
-//     dist[source.id] = 0;
-//     buildHeap();
-    
-// }
+vector<int> Graph::shortestPath(Vertex source, Vertex target) {
+    map<int, int> dist;
+    map<int, int> pre;
+    for (auto& v : vec_of_ver) {
+        dist[v.id] = -2;
+        pre[v.id] = -1;
+    }
+    dist[source.id] = 0;
+    priorityQueue pq(vec_of_ver,dist);
+    for(int i =0; i < vec_of_ver.size(); i++) {
+        int u = pq.removeMin();
+        for (auto v : arrOfVertices[u].incid_edgs) {
+            if (!arrOfVertices[v->id].isSeted) {
+                int distance = getDistance(v);
+                if (dist[v->id] == pre[v->id] - 1 || dist[u] + distance < dist[v->id]) {
+                    int new_dis = dist[u] + distance;
+                    pq.updateDistance(dist, v->id, new_dis);
+                    dist[v->id] = dist[u] + distance;
+                    pre[v->id] = u;
+                }
+            }
+        }
+    }
+    int t = target.id;
+    vector<int> r;
+    r.push_back(t);
+    while (pre[t] != source.id) {
+        t = pre[t];
+        r.push_back(t);
+    }
+    r.push_back(source.id);
+    reverse(r.begin(),r.end());
+    return r;
+}
 
-// void buildHeap() {
-    
-// }
+void Graph::addVertex(Vertex v) {
+    arrOfVertices[v.id] = v;
+    arrOfVertices[v.id].isSeted = true;
+}
+
+int Graph::getDistance(Edge *e) {
+    double lat1 = arrOfVertices[e->source].lat;
+    double lon1 = arrOfVertices[e->source].longt;
+    double lat2 = arrOfVertices[e->dest].lat;
+    double lon2 = arrOfVertices[e->dest].longt;
+
+   
+    long double PI = 0.017453292519943295;
+    long double R = 6.371229*1e6;
+
+    long double a = 0.5 - cos((lat2 - lat1) * PI)/2 + cos(lat1 * PI) * cos(lat2 * PI) * (1 - cos((lon2 - lon1) * PI))/2;
+    return int(12742 * asin(sqrt(a))); // in km
+}
