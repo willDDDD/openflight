@@ -39,21 +39,38 @@ TEST_CASE("readFromFile: test split_route") {
 vector<Vertex> vecOfV = read_airport("airport.dat");
 vector<Edge> vecOfE = read_route("route.dat");
 Graph g;
-TEST_CASE("test build") {
+TEST_CASE("Graph: test build") {
     g.build(vecOfE, vecOfV);
     REQUIRE("Goroka" == g.arrOfVertices[1].city);
 }
-TEST_CASE("test BFS") {
-
+TEST_CASE("Graph: test BFS by counting component") {
+    g.BFS();
+    REQUIRE(4567 == g.component);
 }
-TEST_CASE("test getAllMinorityGroups") {
-
+TEST_CASE("Graph: test getAllMinorityGroups") {
+    g.BFS();
+    REQUIRE(9132 == g.getAllMinorityGroups().size());
 }
-TEST_CASE("test getExactMinorityByNum") {
-
+TEST_CASE("Graph: test getExactMinorityByNum") {
+    g.BFS();
+    REQUIRE(6 == g.getExactMinorityByNum(2).size());
 }
-TEST_CASE("test getExactMinorityByV") {
+TEST_CASE("Graph: test getExactMinorityByV") {
+    g.BFS();
+    REQUIRE(1 == g.getExactMinorityByV(vecOfV[0]).size());
+}
+TEST_CASE("Graph drawing: test findAirportCoor") {
+    
+}
+TEST_CASE("Graph drawing: test drawAirport") {
+    
+}
+TEST_CASE("Graph drawing: test drawAirline") {
+    
+}
 
+TEST_CASE("test priorityQueue constructor") {
+    
 }
 
 

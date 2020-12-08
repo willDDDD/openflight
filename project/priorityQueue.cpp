@@ -44,16 +44,15 @@ void priorityQueue::heapifyUp(unsigned currIdx) {
     }
 }
 
-
-// void priorityQueue::heapifyDown(unsigned currIdx) {
-//     if (hasAChild(currIdx)) {
-//         unsigned hpChildIdx = highestPriorityChild(currIdx);
-//         if (firstShorterThanSec(hpChildIdx, currIdx)) {
-//             swap(hpChildIdx, currIdx);
-//             heapifyDown(hpChildIdx);
-//         }
-//     }
-// }
+void priorityQueue::heapifyDown(unsigned currIdx) {
+    if (hasAChild(currIdx)) {
+        unsigned hpChildIdx = highestPriorityChild(currIdx);
+        if (firstShorterThanSec(hpChildIdx, currIdx)) {
+            swap(hpChildIdx, currIdx);
+            heapifyDown(hpChildIdx);
+        }
+    }
+}
 
 void priorityQueue::swap(unsigned first, unsigned sec) {
     pair<int, int> temp = vec_for_heap_[first];
