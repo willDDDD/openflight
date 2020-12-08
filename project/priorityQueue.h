@@ -5,6 +5,8 @@
 #define VECTOR_MAX_SIZE 14111
 #define HEAP_MAX_SIZE 16385
 
+using std::pair;
+
 /*
  * Reference: xinlong3 lab_heap
  */
@@ -20,9 +22,11 @@ class priorityQueue {
          */
         // int* arr_for_heap_;
         /*
-         * 
+         * The array that represents the heap
+         * the first int is the airport id
+         * the second int is the distance of that airport to the current center airport
          */
-        pair<int, int> arr_for_heap_;
+        vector<pair<int, int>> vec_for_heap_;
         /*
          * the current size of arr_for_heap_
          */
@@ -36,8 +40,8 @@ class priorityQueue {
         /*
          * resize arr_for_heap_
          */
-        void resizeArray(); // I realized that we do not actually need this
-        void buildHeap(const vector<Vertex> & vec);
+        // void resizeArray(); // I realized that we do not actually need this
+        void buildHeap();
         bool hasAChild(unsigned currIdx);
         /*
          * Compare the first distance to the second distance
