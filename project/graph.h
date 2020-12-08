@@ -33,4 +33,6 @@ class Graph {
       vector<int> shortestPath(Vertex,Vertex);
       // void buildHeap();
       int getDistance(Edge *);
+      // return whether the first is smaller than the second distance
+      bool distCompareHelper(int first, int second);
 };

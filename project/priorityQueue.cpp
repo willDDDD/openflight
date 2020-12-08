@@ -2,7 +2,7 @@
 
 priorityQueue::priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map) {
     // id_to_dist_.resize(VECTOR_MAX_SIZE);
-    vec_for_heap_.push_back(pair<int, int>(-1, -1));
+    vec_for_heap_.push_back(pair<int, int>(-100, -100));
     for (unsigned i = 0; i < vec.size(); i++) {
         vec_for_heap_.push_back(pair<int, int>(vec[i].id, dist_map.at(vec[i].id)));
         // id_to_dist_[vec[i].id] = dist_map.at(vec[i].id);
@@ -134,10 +134,16 @@ bool priorityQueue::empty() const {
 
 unsigned priorityQueue::findIndex(int id) {
     unsigned i;
-    for (i = 0; i <= vec_for_heap_.size(); i++) {
+    for (i = 0; i < vec_for_heap_.size(); i++) {
         if (vec_for_heap_[i].first == id) {
             break;
         }
     }
     return i;
+}
+
+void priorityQueue::printElements() {
+    for (unsigned i = 0; i < vec_for_heap_.size(); i++) {
+        std::cout << "Element " << i << " id and distance: " << vec_for_heap_[i].first << "  "<< vec_for_heap_[i].second << std::endl;
+    }
 }

@@ -17,6 +17,7 @@ void Graph::buildhash(const vector<Vertex> &input) {
         arrOfVertices[i.id] = i;
         arrOfVertices[i.id].isSeted = true;
     }
+    vec_of_ver = input;
 }
 
 void Graph::build(const vector<Edge> &input, const vector<Vertex> &v) {
@@ -125,18 +126,32 @@ vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
 vector<int> Graph::shortestPath(Vertex source, Vertex target) {
     map<int, int> dist;
     map<int, int> pre;
+    // std::cout << "here 1" << std::endl;
     for (auto& v : vec_of_ver) {
+        if (v.id == 3797) {
+            // std::cout << "3797 found" << std::endl;
+        }
         dist[v.id] = -2;
         pre[v.id] = -1;
     }
     dist[source.id] = 0;
+    // std::cout << "here 2" << std::endl;
     priorityQueue pq(vec_of_ver,dist);
-    for(int i =0; i < vec_of_ver.size(); i++) {
+    // std::cout << "here 3" << std::endl;
+    // std::cout << vec_of_ver.size() << std::endl;
+    for(unsigned i = 0; i < vec_of_ver.size(); i++) {
+        // std::cout << "here 4" << std::endl;
+        // pq.printElements();
         int u = pq.removeMin();
+        // std::cout << u << std::endl;
         for (auto v : arrOfVertices[u].incid_edgs) {
-            if (!arrOfVertices[v->id].isSeted) {
+            // std::cout << "here in 1" << std::endl;
+            if (arrOfVertices[v->id].isSeted) {
+                // std::cout << "here in 2" << std::endl;
                 int distance = getDistance(v);
-                if (dist[v->id] == pre[v->id] - 1 || dist[u] + distance < dist[v->id]) {
+                // std::cout << distance << std::endl;
+                if (/* dist[v->id] == pre[v->id] - 1  ||*/ distCompareHelper(dist[u] + distance, dist[v->id]) /* dist[u] + distance < dist[v->id] */) {
+                    // std::cout << "here in 3" << std::endl;
                     int new_dis = dist[u] + distance;
                     pq.updateDistance(dist, v->id, new_dis);
                     dist[v->id] = dist[u] + distance;
@@ -144,11 +159,14 @@ vector<int> Graph::shortestPath(Vertex source, Vertex target) {
                 }
             }
         }
+        // std::cout << u << std::endl;
     }
     int t = target.id;
     vector<int> r;
     r.push_back(t);
+    // std::cout << "here 5" << std::endl;
     while (pre[t] != source.id) {
+        std::cout << pre[t] << std::endl;
         t = pre[t];
         r.push_back(t);
     }
@@ -170,8 +188,21 @@ int Graph::getDistance(Edge *e) {
 
    
     long double PI = 0.017453292519943295;
-    long double R = 6.371229*1e6;
+    // long double R = 6.371229*1e6;
 
     long double a = 0.5 - cos((lat2 - lat1) * PI)/2 + cos(lat1 * PI) * cos(lat2 * PI) * (1 - cos((lon2 - lon1) * PI))/2;
     return int(12742 * asin(sqrt(a))); // in km
+}
+
+bool Graph::distCompareHelper(int first, int second) {
+    if (first < 0 && second < 0) {
+        return false;
+    }
+    if (first < 0) {
+        return false;
+    }
+    if (second < 0) {
+        return true;
+    }
+    return first < second;
 }

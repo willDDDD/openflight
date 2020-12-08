@@ -2,6 +2,7 @@
 #include <map>
 #include "vertex.h"
 #include <vector>
+#include <iostream>
 #define VECTOR_MAX_SIZE 14111
 #define HEAP_MAX_SIZE 16385
 
@@ -30,12 +31,12 @@ class priorityQueue {
         /*
          * the current size of arr_for_heap_
          */
-        unsigned afhSize;
+        // unsigned afhSize;
         /*
          * the current number of elements in the heap
          * excluding the thing on the 0th index
          */
-        unsigned currentHeapSize;
+        // unsigned currentHeapSize;
 
         /*
          * resize arr_for_heap_
@@ -45,7 +46,7 @@ class priorityQueue {
         bool hasAChild(unsigned currIdx);
         /*
          * Compare the first distance to the second distance
-         * break tie by returning false
+         * break tie by returning true
          */
         bool firstShorterThanSec(int firstId, int secondId);
         unsigned findLeftChild(unsigned currIdx);
@@ -61,7 +62,7 @@ class priorityQueue {
         unsigned highestPriorityChild(unsigned currIdx);
         /*
          * The helper function for firstShorterThanSec()
-         * break tie by returning false
+         * break tie by returning true
          */
         bool fSTHelper(int dist1, int dist2);
         /*
@@ -75,6 +76,7 @@ class priorityQueue {
         priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map);
         void updateDistance(const map<int, int> & dist_map, int id, int newDis);
         int removeMin();
+        void printElements();
         /*
          * See what is now at the top of the heap
          */

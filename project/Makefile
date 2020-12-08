@@ -2,7 +2,7 @@
 
 EXENAME = finalproj
 
-OBJS = graphDrawing.o readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o 
+OBJS = graphDrawing.o readFromFile.o main.o vertex.o edge.o graph.o HSLA/HSLAPixel.o HSLA/PNG.o HSLA/lodepng/lodepng.o priorityQueue.o
  
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic

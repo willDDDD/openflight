@@ -27,11 +27,14 @@ int main()
 	vector<Edge> vecOfE = read_route("route.dat");
 	Graph g;
 	g.build(vecOfE, vecOfV);
-	for (auto e : vecOfE) {
-		Vertex dest = g.arrOfVertices[e.dest];
-		Vertex source = g.arrOfVertices[e.source];
-		image.drawAirline(png, source, dest, 270);
-	}
+
+	// for (auto e : vecOfE) {
+	// 	Vertex dest = g.arrOfVertices[e.dest];
+	// 	Vertex source = g.arrOfVertices[e.source];
+	// 	image.drawAirline(png, source, dest, 270);
+	// }
+
+	
 	//new york             
 	// Vertex  v1 =  Vertex(111, 34, -118, "LA", "418"); //id, lat, long, city, ITAT code 10S, 10E             
 	// Vertex  v2 =  Vertex(112, 18, 72,"MM", "614"); // id, lat, long, city, ITAT code
@@ -46,9 +49,56 @@ int main()
 	// image.drawAirline(png, v1, v2, 270); //hue 270 is purple
 	
 
-	png.writeToFile("output_image_test.png");
-	 
+	// png.writeToFile("output_image_test.png");
+	
+	// test priority queue
+	// vector<Vertex> vec_of_ver_test;
+	// Vertex firstV(1, -10, -10, "fc", "FIR");
+	// vec_of_ver_test.push_back(firstV);
+	// Vertex secondV(2, -10, 50, "sc", "SEC");
+	// vec_of_ver_test.push_back(secondV);
+	// Vertex thirdV(3, 50, 50, "thirdc", "THD");
+	// vec_of_ver_test.push_back(thirdV);
+	// Vertex fourthV(4, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(fourthV);
+	// Vertex fifthV(5, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(fifthV);
+	// Vertex sixthV(6, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(sixthV);
+	// Vertex seventhV(7, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(seventhV);
+	// Vertex eighthV(8, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(eighthV);
+	// Vertex ninethV(9, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(ninethV);
+	// Vertex tenthV(10, 50, -10, "fourthC", "FTH");
+	// vec_of_ver_test.push_back(tenthV);
+	// map<int, int> dist_map_test;
+	// dist_map_test[firstV.id] = 0;
+	// dist_map_test[secondV.id] = -60;
+	// dist_map_test[thirdV.id] = 50;
+	// dist_map_test[fourthV.id] = -60;
+	// dist_map_test[fifthV.id] = 40;
+	// dist_map_test[sixthV.id] = 20;
+	// dist_map_test[seventhV.id] = 30;
+	// dist_map_test[eighthV.id] = -30;
+	// dist_map_test[ninethV.id] = -5;
+	// dist_map_test[tenthV.id] = 15;
 
+	// priorityQueue pq_test(vec_of_ver_test, dist_map_test);
+	// pq_test.printElements();
+	// std::cout << "----------------------" << endl;
+	// pq_test.updateDistance(dist_map_test, 2, 3);
+	// pq_test.printElements();
+	
+
+	// test shortest path
+	Vertex source(3797, 31.780000686645508,117.2979965209961, "New York", "JFK");
+	Vertex target(3484, 33.94250107, -118.4079971, "Los Angeles", "LAX");
+	vector<int> FromJFKToLAX = g.shortestPath(source, target);
+	for (auto v : FromJFKToLAX) {
+		std::cout << v << std::endl;
+	}
 
 	// vector<Vertex> vecOfV = read_airport("airport.dat");
 	// vector<Edge> vecOfE = read_route("route.dat");
