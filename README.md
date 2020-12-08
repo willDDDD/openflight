@@ -1,42 +1,71 @@
-# xinlong3-xiuhaod2-zfeng13-siyiyu2
-Final Project
+# Final Project
 
-Please "git pull" before start coding!
+This dataset provides us with the absolute location (latitude and
+longitude) and airlines of every airport. We can use the absolute location to
+calculate the distance between two airports. (https://openflights.org/data.html) The two
+datasets we will use are airport dataset and route dataset. The format of the dataset
+will be a .dat file where each line contains detailed information for an airline route.
+## Name
 
-Please write log.txt after you finish your tasks.
+OpenFlights data structure
 
-
-What did you do today? Please indicate your work in this log.
-
-2020/11/20
-    create:
-        route.dat airport.dat
-        edge.cpp edge.h
-        vertex.cpp vertex.h
-        get_data.hpp get_data.h
-        main.cpp
-        Makefile
-    TODO: 
-        add new file: route.dat
+## Visual
+![graph](./project/output_image_test.png)
 
 
-2020/11/21
-    Apply the given template
-    Able to print out the airport_sample
-    create:
-        folder: catch tests
-        airport_sample.dat
-        readFromFile.cpp readFromFile.hpp
-    TODO:
-        add new file: route.dat
-        get_data.cpp
+## Environment
 
-2020/11/22
-    readFromFile can read airport and route
-    Able to print the sample data in main function with split
-    add documentations for functions
-    create:
-        route.dat route_sample.dat
-    TODO:
-        discuss how to implement with adjacent list
-        
+Use clang++.
+
+```bash
+CXX = clang++
+```
+## Datasets
+
+[OpenFilghts airlines.dat](https://raw.githubusercontent.com/jpatokal/openflights/master/data/airlines.dat)
+
+[OpenFlights routes.dat](https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat)
+
+## Data Structure
+
+Adjacent List
+
+
+Vertices: 
+a unique id of the airport, latitude, longitude, and some pointers.
+According to their latitude and longitude, putting them in the right place in the
+graph.
+
+Edges: 
+two nodes are connected by an edge if there exist an airline between them
+Graph drawing: using the number of incident edges connected to each node to
+decide its color. The color varies according to the degree of the node.
+
+## Usage
+
+```python
+import foobar
+
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Authors and acknowledgment
+
+Xinlong Dai
+
+Xiuhao Ding
+
+Zongxian Feng
+
+Siyi Yu
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)

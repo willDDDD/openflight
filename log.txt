@@ -135,6 +135,13 @@ What did you do today? Please indicate your work in this log.
         implement Dijkstra's algorithm
         write testcases for the existed functions
 
+2020/12/7
+    update readme.md.
+    implement the shortest path and priorityQueue but not tested yet
+    wirte some simple testcases(some might not works)
+    change the Testcases part in GOALS.
 
+    TODO:
+        debug priorityQueue and ShortestPath
 
     
