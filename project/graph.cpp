@@ -145,13 +145,13 @@ vector<int> Graph::shortestPath(Vertex source, Vertex target) {
         int u = pq.removeMin();
         // std::cout << u << std::endl;
         for (auto v : arrOfVertices[u].incid_edgs) {
-            // std::cout << "here in 1" << std::endl;
+            //std::cout << "here in 1" << std::endl;
             if (arrOfVertices[v->id].isSeted) {
-                // std::cout << "here in 2" << std::endl;
+                //std::cout << "here in 2" << std::endl;
                 int distance = getDistance(v);
-                // std::cout << distance << std::endl;
+                std::cout << "distance: " << distance << std::endl;
                 if (/* dist[v->id] == pre[v->id] - 1  ||*/ distCompareHelper(dist[u] + distance, dist[v->id]) /* dist[u] + distance < dist[v->id] */) {
-                    // std::cout << "here in 3" << std::endl;
+                    //std::cout << "here in 3" << std::endl;
                     int new_dis = dist[u] + distance;
                     pq.updateDistance(dist, v->id, new_dis);
                     dist[v->id] = dist[u] + distance;
@@ -164,13 +164,14 @@ vector<int> Graph::shortestPath(Vertex source, Vertex target) {
     int t = target.id;
     vector<int> r;
     r.push_back(t);
-    // std::cout << "here 5" << std::endl;
+    std::cout << "here 5" << std::endl;
     while (pre[t] != source.id) {
         std::cout << pre[t] << std::endl;
         t = pre[t];
         r.push_back(t);
     }
     r.push_back(source.id);
+    // std::cout << "size: " << r.size() << std::endl;
     reverse(r.begin(),r.end());
     return r;
 }
