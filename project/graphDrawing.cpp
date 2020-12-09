@@ -178,9 +178,9 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport)
         color.h = 0;
         color.s = 1;
         color.l = 0.5;
-        color.a = 0;
+        color.a = 1;
     } else {
-        color.h = hue + 200;
+        color.h = hue + 100;
         color.s = 1;
         color.l = 0.5;
         color.a = 1;
@@ -193,7 +193,7 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport)
     {
         for (int j = y - 1; j <= y + 1; j++)
         {
-            HSLAPixel &pixel = png.getPixel(i, j);
+            HSLAPixel &pixel = png.getPixel(i, j + 1);
             pixel = color;
         }
     }
