@@ -144,4 +144,14 @@ What did you do today? Please indicate your work in this log.
     TODO:
         debug priorityQueue and ShortestPath
 
+2020/12/8
+    update GOALS and readme.md
+    improve the drawAirline, now we can draw a solid line
+    the shortest path algorithm is now working
+    but some airport does not have an airline, it might cause a stuck.
+
+    TODO:
+        prepared for the video recording
+        generate a RESULT document
+
     

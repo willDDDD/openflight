@@ -124,6 +124,7 @@ vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
 }	
 
 vector<int> Graph::shortestPath(Vertex source, Vertex target) {
+    
     map<int, int> dist;
     map<int, int> pre;
     for (auto& e : vec_of_ver) {

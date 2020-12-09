@@ -28,11 +28,11 @@ int main()
 	Graph g;
 	g.build(vecOfE, vecOfV);
 
-	// for (auto e : vecOfE) {
-	// 	Vertex dest = g.arrOfVertices[e.dest];
-	// 	Vertex source = g.arrOfVertices[e.source];
-	// 	image.drawAirline(png, source, dest, 270);
-	// }
+	for (auto e : vecOfE) {
+		Vertex dest = g.arrOfVertices[e.dest];
+		Vertex source = g.arrOfVertices[e.source];
+		image.drawAirline(png, source, dest, 270);
+	}
 
 	
 	//new york             
@@ -93,16 +93,28 @@ int main()
 	
 
 	// test shortest path
-	Vertex source(3374, 31.780000686645508,117.2979965209961, "Baoan", "SZX");
-	Vertex target(3830, 33.94250107, -118.4079971, "Chicago", "GRUSP");
-	vector<int> FromJFKToLAX = g.shortestPath(source, target);
-	for (size_t i = 0; i < FromJFKToLAX.size();i++) {
-		std::cout << FromJFKToLAX[i] << std::endl;
-		if (i+1 < FromJFKToLAX.size()) {
-			image.drawAirline(png, g.arrOfVertices[FromJFKToLAX[i]], g.arrOfVertices[FromJFKToLAX[i+1]], 270);
-		}
-	}
+	//6341,"Beijing Nanyuan Airport","Beijing","China","NAY","ZBNY",39.782798767089844,116.38800048828125,0,8,"U","Asia/Shanghai","airport","OurAirports"
+	//6466,"Donskoye Airport","Tambow","Russia","TBW","UUOT",52.806098937988,41.482799530029,413,3,"N","Europe/Moscow","airport","OurAirports"
+	//6048,"Port Stanley Airport","Stanley","Falkland Islands","PSY","SFAL",-51.685699462891,-57.777599334717,75,-3,"U","Atlantic/Stanley","airport","OurAirports"
+	//6985,"Nelspruit Airport","Nelspruit","South Africa","NLP","FANS",-25.5,30.9137992859,2875,2,"U","Africa/Johannesburg","airport","OurAirports"
+	//3830,"Chicago O'Hare International Airport","Chicago","United States","ORD","KORD",41.9786,-87.9048,672,-6,"A","America/Chicago","airport","OurAirports"
+	//813,"OR Tambo International Airport","Johannesburg","South Africa","JNB","FAOR",-26.1392,28.246,5558,2,"U","Africa/Johannesburg","airport","OurAirports"
+	//2654,"María Dolores Airport","Los Angeles","Chile","LSQ","SCGE",-37.40169906616211,-72.42539978027344,374,-4,"S","America/Santiago","airport","OurAirports"
+	//3484,"Los Angeles International Airport","Los Angeles","United States","LAX","KLAX",33.94250107,-118.4079971,125,-8,"A","America/Los_Angeles","airport","OurAirports"
+
+	// Vertex source(3484, 80,118.4079971, "LA", "TBW");
+	// Vertex target(6341, -80.782798767089844,-116.38800048828125, "Beijing", "PSY");
+	// image.drawAirline(png, source, target, 270);
+	// vector<int> route = g.shortestPath(source, target);
+	// for (size_t i = 0; i < route.size();i++) {
+	// std::cout << route[i] << std::endl;
+	// if (i+1 < route.size()) {
+	// 	image.drawAirline(png, g.arrOfVertices[route[i]], g.arrOfVertices[route[i+1]], 270);
+	// }
+	
 	png.writeToFile("output_image_test.png");
+
+	
 	
 
 	// vector<Vertex> vecOfV = read_airport("airport.dat");
