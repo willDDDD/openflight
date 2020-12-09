@@ -174,16 +174,24 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport)
     int y = airport_coordinate.second;
     HSLAPixel color;
     int hue = airport.incid_edgs.size();
-    color.h = hue + 100;
-    color.s = 1;
-    color.l = 0.5;
-    color.a = 1;
+    if (hue == 0) {
+        color.h = 0;
+        color.s = 1;
+        color.l = 0.5;
+        color.a = 0;
+    } else {
+        color.h = hue + 200;
+        color.s = 1;
+        color.l = 0.5;
+        color.a = 1;
+    }
+    
     
     
 
-    for (int i = x - 2; i <= x + 2; i++)
+    for (int i = x - 1; i <= x + 1; i++)
     {
-        for (int j = y - 2; j <= y + 2; j++)
+        for (int j = y - 1; j <= y + 1; j++)
         {
             HSLAPixel &pixel = png.getPixel(i, j);
             pixel = color;

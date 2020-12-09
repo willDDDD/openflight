@@ -31,6 +31,9 @@ int main()
 	Graph_coloring image = Graph_coloring(png);//args
 	int count = 0;
 	for (auto v : vecOfV) {
+		if (g.arrOfVertices[v.id].incid_edgs.size() == 0) {
+			count++;
+		}
 		image.drawAirport(png, g.arrOfVertices[v.id]);
 	}
 	cout<<count<<endl;
