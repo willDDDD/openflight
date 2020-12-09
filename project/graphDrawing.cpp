@@ -180,9 +180,9 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport, double lum)
     color.l = lum;
     color.a = 1;
 
-    for (int i = x - 1; i <= x + 1; i++)
+    for (int i = x; i < x + 1; i++)
     {
-        for (int j = y - 1; j <= y + 1; j++)
+        for (int j = y; j < y + 1; j++)
         {
             HSLAPixel &pixel = png.getPixel(i, j);
             pixel = color;
