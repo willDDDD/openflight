@@ -48,19 +48,19 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             int y_diff = y1 - y2;
             int coor = y2 + (2048 - x2) * 1.0 / x_diff * y_diff;
             for (int y = coor + 1; y < y1; y++) {
-                int x = (coor - y) * x1 * 1.0 / (coor - y1);
+                double x = (coor - y) * x1 * 1.0 / (coor - y1);
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
             for (int y = y2; y < coor; y++) {
-                int x = (coor - y) * (2048 - x2) * 1.0/ (coor - y2);
+                double x = (coor - y) * (2048 - x2) * 1.0/ (coor - y2);
                 HSLAPixel &pixel = png.getPixel(2048 - x, y);
                 pixel = color;
             }
         } else {
             for (int x = x1; x <= x2; x++)
             {
-                int y = -((x - x1) * (y1 - y2) * 1.0 / (x2 - x1)) + y1;
+                double y = -((x - x1) * (y1 - y2) * 1.0 / (x2 - x1)) + y1;
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
@@ -77,14 +77,14 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             int coor = y2 - (2048 - x2) * 1.0 / x_diff * y_diff;
             for (int y = y1; y < coor; y++)
             {
-                int x = (coor - y) * x1 * 1.0/ (coor - y1);
+                double x = (coor - y) * x1 * 1.0/ (coor - y1);
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
             for (int y = coor + 1; y < y2; y++)
             {
                
-                int x = (coor - y) * (2048 - x2) * 1.0/ (coor - y2);
+                double x = (coor - y) * (2048 - x2) * 1.0/ (coor - y2);
                 HSLAPixel &pixel = png.getPixel(2048 - x, y);
                 pixel = color;
             }
@@ -93,7 +93,7 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
         {
             for (int x = x1; x <= x2; x++)
             {
-                int y = ((x - x1) * (y2 - y1) * 1.0/ (x2 - x1)) + y1;
+                double y = ((x - x1) * (y2 - y1) * 1.0/ (x2 - x1)) + y1;
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
@@ -107,19 +107,19 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             int y_diff = y2 - y1;
             int coor = y1 + (2048 - x1) * 1.0 / x_diff * y_diff;
             for (int y = coor  + 1; y < y2; y++) {
-                int x = (coor - y) * x2 / (coor - y2);
+                double x = (coor - y) * x2 / (coor - y2);
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
             for (int y = y1; y < coor; y++) {
-                int x = (coor - y) * (2048 - x1)* 1.0 / (coor - y1);
+                double x = (coor - y) * (2048 - x1)* 1.0 / (coor - y1);
                 HSLAPixel &pixel = png.getPixel(2048 - x, y);
                 pixel = color;
             }
         } else {
             for (int y = y1; y <= y2; y++)
             {
-                int x = -((y - y1) * (x1 - x2)* 1.0 / (y2 - y1)) + x1;
+                double x = -((y - y1) * (x1 - x2)* 1.0 / (y2 - y1)) + x1;
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
@@ -136,14 +136,14 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             for (int y = y2; y < coor; y++)
             {
                 
-                int x = (coor - y) * x2 * 1.0/ (coor - y2);
+                double x = (coor - y) * x2 * 1.0/ (coor - y2);
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }
             for (int y = coor + 1; y < y1; y++)
             {
                
-                int x = (coor - y) * (2048 - x1) * 1.0/ (coor - y1);
+                double x = (coor - y) * (2048 - x1) * 1.0/ (coor - y1);
                 HSLAPixel &pixel = png.getPixel(2048 - x, y);
                 pixel = color;
             }
@@ -151,7 +151,7 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
         else {
             for (int y = y2; y <= y1; y++)
             {
-                int x = ((y2 - y) * (x1 - x2)* 1.0 / (y2 - y1)) + x2;
+                double x = ((y2 - y) * (x1 - x2)* 1.0 / (y2 - y1)) + x2;
                 HSLAPixel &pixel = png.getPixel(x, y);
                 pixel = color;
             }

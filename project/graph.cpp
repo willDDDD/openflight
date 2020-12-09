@@ -20,8 +20,8 @@ void Graph::buildhash(const vector<Vertex> &input) {
     vec_of_ver = input;
 }
 
-void Graph::build(const vector<Edge> &input, const vector<Vertex> &v) {
-    buildhash(v);
+void Graph::build(const vector<Edge> &input, const vector<Vertex> &e) {
+    buildhash(e);
     for (auto i : input) {
         bool c = true;
         for (unsigned long m = 0; m < list.size();m++) {
@@ -126,59 +126,38 @@ vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
 vector<int> Graph::shortestPath(Vertex source, Vertex target) {
     map<int, int> dist;
     map<int, int> pre;
-    // std::cout << "here 1" << std::endl;
-    for (auto& v : vec_of_ver) {
-        if (v.id == 3797) {
-            // std::cout << "3797 found" << std::endl;
-        }
-        dist[v.id] = -2;
-        pre[v.id] = -1;
+    for (auto& e : vec_of_ver) {
+        dist[e.id] = -2;
+        pre[e.id] = -1;
     }
     dist[source.id] = 0;
-    // std::cout << "here 2" << std::endl;
     priorityQueue pq(vec_of_ver,dist);
-    // std::cout << "here 3" << std::endl;
-    // std::cout << vec_of_ver.size() << std::endl;
     for(unsigned i = 0; i < vec_of_ver.size(); i++) {
-        // std::cout << "here 4" << std::endl;
-        // pq.printElements();
         int u = pq.removeMin();
-        // std::cout << u << std::endl;
-        for (auto v : arrOfVertices[u].incid_edgs) {
-            //std::cout << "here in 1" << std::endl;
-            if (arrOfVertices[v->id].isSeted) {
-                //std::cout << "here in 2" << std::endl;
-                int distance = getDistance(v);
+        arrOfVertices[u].short_vis = true;
+        for (auto e : arrOfVertices[u].incid_edgs) {
+            if (arrOfVertices[e->dest].short_vis == false) {
+                int distance = getDistance(e);
                 std::cout << "distance: " << distance << std::endl;
-                if (/* dist[v->id] == pre[v->id] - 1  ||*/ distCompareHelper(dist[u] + distance, dist[v->id]) /* dist[u] + distance < dist[v->id] */) {
-                    //std::cout << "here in 3" << std::endl;
+                if (distCompareHelper(dist[u] + distance, dist[e->dest])) {
                     int new_dis = dist[u] + distance;
-                    pq.updateDistance(dist, v->id, new_dis);
-                    dist[v->id] = dist[u] + distance;
-                    pre[v->id] = u;
+                    pq.updateDistance(dist, e->dest, new_dis);
+                    dist[e->dest] = dist[u] + distance;
+                    pre[e->dest] = u;
                 }
             }
         }
-        // std::cout << u << std::endl;
     }
     int t = target.id;
     vector<int> r;
     r.push_back(t);
-    std::cout << "here 5" << std::endl;
     while (pre[t] != source.id) {
-        std::cout << pre[t] << std::endl;
         t = pre[t];
         r.push_back(t);
     }
     r.push_back(source.id);
-    // std::cout << "size: " << r.size() << std::endl;
     reverse(r.begin(),r.end());
     return r;
-}
-
-void Graph::addVertex(Vertex v) {
-    arrOfVertices[v.id] = v;
-    arrOfVertices[v.id].isSeted = true;
 }
 
 int Graph::getDistance(Edge *e) {

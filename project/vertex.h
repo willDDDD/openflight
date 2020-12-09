@@ -40,6 +40,6 @@ class Vertex {
         string IATA;   //3-letter IATA code. Null if not assigned/unknown.
         bool is_explored;
         bool isSeted;
-        
+        bool short_vis;
         deque<Edge*> incid_edgs;
 };

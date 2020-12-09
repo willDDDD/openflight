@@ -93,12 +93,17 @@ int main()
 	
 
 	// test shortest path
-	Vertex source(3797, 31.780000686645508,117.2979965209961, "New York", "JFK");
-	Vertex target(3484, 33.94250107, -118.4079971, "Los Angeles", "LAX");
+	Vertex source(3374, 31.780000686645508,117.2979965209961, "Baoan", "SZX");
+	Vertex target(3830, 33.94250107, -118.4079971, "Chicago", "GRUSP");
 	vector<int> FromJFKToLAX = g.shortestPath(source, target);
-	for (auto v : FromJFKToLAX) {
-		std::cout << v << std::endl;
+	for (size_t i = 0; i < FromJFKToLAX.size();i++) {
+		std::cout << FromJFKToLAX[i] << std::endl;
+		if (i+1 < FromJFKToLAX.size()) {
+			image.drawAirline(png, g.arrOfVertices[FromJFKToLAX[i]], g.arrOfVertices[FromJFKToLAX[i+1]], 270);
+		}
 	}
+	png.writeToFile("output_image_test.png");
+	
 
 	// vector<Vertex> vecOfV = read_airport("airport.dat");
 	// vector<Edge> vecOfE = read_route("route.dat");

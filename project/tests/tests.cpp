@@ -59,7 +59,7 @@ TEST_CASE("Graph: test getExactMinorityByV") {
     g.BFS();
     REQUIRE(1 == g.getExactMinorityByV(vecOfV[0]).size());
 }
-
+/*
 TEST_CASE("Graph drawing: test findAirportCoor") {
     PNG png;
     png.readFromFile("world_map.png");
@@ -85,10 +85,14 @@ TEST_CASE("Graph drawing: test findAirportCoor") {
     image.drawAirline(png, v1, v2, 270); //hue 270 is purple
     REQUIRE(0.5 == png.getPixel(100,200).l);
 }
+*/
 
-
-TEST_CASE("test priorityQueue constructor") {
-    
+TEST_CASE("test Shortest Path") {
+	
+    Vertex source1(3797, 31.780000686645508,117.2979965209961, "Shanghai", "HQ");
+	Vertex target1(3484, 33.94250107, -118.4079971, "Los Angeles", "LAX");
+	vector<int> FromJFKToLAX = g.shortestPath(source1, target1);
+	REQUIRE(1 == FromJFKToLAX.size());
 }
 
 

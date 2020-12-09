@@ -26,6 +26,7 @@ Vertex::Vertex(int a, double b, double c, string d, string e) {
     IATA = e;
     is_explored = false;
     isSeted = false;
+    short_vis = false;
 }
 
 
