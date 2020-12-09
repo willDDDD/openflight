@@ -148,7 +148,7 @@ What did you do today? Please indicate your work in this log.
     update GOALS and readme.md
     improve the drawAirline, now we can draw a solid line
     the shortest path algorithm is now working
-    but some airport does not have an airline, it might cause a stuck.
+    We handle the case that the target or the source is in a miniorty group.
 
     TODO:
         prepared for the video recording

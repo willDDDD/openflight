@@ -29,6 +29,12 @@ int main()
 	PNG png;
 	png.readFromFile("world_map.png");
 	Graph_coloring image = Graph_coloring(png);//args
+	int count = 0;
+	for (auto v : vecOfV) {
+		image.drawAirport(png, g.arrOfVertices[v.id]);
+	}
+	cout<<count<<endl;
+	png.writeToFile("output_image_test.png");
 	// for (auto e : vecOfE) {
 	// 	Vertex dest = g.arrOfVertices[e.dest];
 	// 	Vertex source = g.arrOfVertices[e.source];
@@ -124,11 +130,7 @@ int main()
 	// } else {
 	// 	cout<< "single"<<endl;
 	// }
-	for (auto v : vecOfV) {
-		image.getColor(v);
-		image.drawAirport(png, v, image.c);
-	}
-	png.writeToFile("output_image_test.png");
+	
 
 	
 	

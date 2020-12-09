@@ -141,9 +141,6 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             double x_diff = 2048 - x1 + x2;
             double y_diff = y2 - y1;
             double coor = y2 - (y_diff/ x_diff) * x2;
-            cout<<"y1: "<<y1<<endl;
-            cout<<"coor: "<<coor<<endl;
-            cout<<"y2: "<<y2<<endl;
             for (int x = 0; x < x2; x++)
             {
                 double y = -((x - 0) * (coor - y2) / (x2 - 0)) + coor;
@@ -169,20 +166,24 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
     }
 }
 
-void Graph_coloring::drawAirport(PNG &png, Vertex airport, double lum)
+
+void Graph_coloring::drawAirport(PNG &png, Vertex airport)
 {
     pair<int, int> airport_coordinate = findAirportCoor(airport);
     int x = airport_coordinate.first;
     int y = airport_coordinate.second;
     HSLAPixel color;
-    color.h = c;
+    int hue = airport.incid_edgs.size();
+    color.h = hue + 100;
     color.s = 1;
     color.l = 0.5;
     color.a = 1;
+    
+    
 
-    for (int i = x; i < x + 1; i++)
+    for (int i = x - 2; i <= x + 2; i++)
     {
-        for (int j = y; j < y + 1; j++)
+        for (int j = y - 2; j <= y + 2; j++)
         {
             HSLAPixel &pixel = png.getPixel(i, j);
             pixel = color;
@@ -190,9 +191,5 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport, double lum)
     }
 }
 
-void Graph_coloring::getColor(Vertex v)
-{   
-    int currnum = v.incid_edgs.size(); //num of incid_edges of v
-    c = 0.25 + currnum / 248 * 0.5;
-}
+
 
