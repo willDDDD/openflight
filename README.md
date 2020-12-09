@@ -59,7 +59,6 @@ Graph g;
 g.build(vecOfE, vecOfV);
 Vertex source(3484, 33.94250107,-118.4079971, "LA", "LAX"); //"Los Angeles International Airport"
 Vertex target(6341, 39.782798767089844,116.38800048828125, "Beijing", "NAY"); //"Beijing Nanyuan Airport"
-image.drawAirline(png, source, target, 270);
 vector<int> route = g.shortestPath(source, target);
 for (size_t i = 0; i < route.size();i++) {
 	std::cout << g.arrOfVertices[route[i]].IATA << std::endl;

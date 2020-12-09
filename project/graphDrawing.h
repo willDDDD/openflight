@@ -19,9 +19,11 @@ class Graph_coloring {
         
         void drawAirline(PNG & png, Vertex source, Vertex dest, double lum);
 
-        void drawAirport(PNG & png, Vertex airport, double lum);
+        void drawAirport(PNG & png, Vertex airport, double c);
 
-        double getLum(Vertex v);
+        void getColor(Vertex v);
+
+        double c;
 
         PNG background;
 

@@ -175,9 +175,9 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport, double lum)
     int x = airport_coordinate.first;
     int y = airport_coordinate.second;
     HSLAPixel color;
-    color.h = 35;
+    color.h = c;
     color.s = 1;
-    color.l = lum;
+    color.l = 0.5;
     color.a = 1;
 
     for (int i = x; i < x + 1; i++)
@@ -190,9 +190,9 @@ void Graph_coloring::drawAirport(PNG &png, Vertex airport, double lum)
     }
 }
 
-double Graph_coloring::getLum(Vertex v)
-{
+void Graph_coloring::getColor(Vertex v)
+{   
     int currnum = v.incid_edgs.size(); //num of incid_edges of v
-    return 0.25 + currnum / 248 * 0.5; //TODO
+    c = 0.25 + currnum / 248 * 0.5;
 }
 

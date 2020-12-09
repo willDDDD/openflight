@@ -20,14 +20,15 @@ int main()
 	// }
 
 	//test output image
-	PNG png;
-	png.readFromFile("world_map.png");
-	Graph_coloring image = Graph_coloring(png);//args
 	vector<Vertex> vecOfV = read_airport("airport.dat");
 	vector<Edge> vecOfE = read_route("route.dat");
 	Graph g;
 	g.build(vecOfE, vecOfV);
+	g.BFS();
 
+	PNG png;
+	png.readFromFile("world_map.png");
+	Graph_coloring image = Graph_coloring(png);//args
 	// for (auto e : vecOfE) {
 	// 	Vertex dest = g.arrOfVertices[e.dest];
 	// 	Vertex source = g.arrOfVertices[e.source];
@@ -102,15 +103,30 @@ int main()
 	//2654,"María Dolores Airport","Los Angeles","Chile","LSQ","SCGE",-37.40169906616211,-72.42539978027344,374,-4,"S","America/Santiago","airport","OurAirports"
 	//3484,"Los Angeles International Airport","Los Angeles","United States","LAX","KLAX",33.94250107,-118.4079971,125,-8,"A","America/Los_Angeles","airport","OurAirports"
 
-	Vertex source(3484, 33.94250107,-118.4079971, "LA", "LAX"); //"Los Angeles International Airport"
-	Vertex target(6341, 39.782798767089844,116.38800048828125, "Beijing", "NAY"); //"Beijing Nanyuan Airport"
-	image.drawAirline(png, source, target, 270);
-	vector<int> route = g.shortestPath(source, target);
-	for (size_t i = 0; i < route.size();i++) {
-		std::cout << g.arrOfVertices[route[i]].IATA << std::endl;
-		if (i+1 < route.size()) {
-			image.drawAirline(png, g.arrOfVertices[route[i]], g.arrOfVertices[route[i+1]], 270);
-		}
+	//find shortest path
+	// Vertex source(3484, 33.94250107,-118.4079971, "LA", "LAX"); //"Los Angeles International Airport"
+	// Vertex target(6048, -51.685699462891,-57.777599334717, "Stanley", "NAY"); //"Beijing Nanyuan Airport"
+	// vector<Vertex> temp = g.getExactMinorityByV(target);
+	// bool check = false;
+	// for (auto i : temp) {
+	// 	if (i.id == source.id) {
+	// 		check = true;
+	// 	}
+	// }
+	// if (check) {
+	// 	vector<int> route = g.shortestPath(source, target);
+	// 	for (size_t i = 0; i < route.size();i++) {
+	// 		std::cout << g.arrOfVertices[route[i]].city<< std::endl;
+	// 		if (i+1 < route.size()) {
+	// 			image.drawAirline(png, g.arrOfVertices[route[i]], g.arrOfVertices[route[i+1]], 270);
+	// 		}
+	//     }
+	// } else {
+	// 	cout<< "single"<<endl;
+	// }
+	for (auto v : vecOfV) {
+		image.getColor(v);
+		image.drawAirport(png, v, image.c);
 	}
 	png.writeToFile("output_image_test.png");
 
