@@ -34,7 +34,6 @@ int main()
 	Graph_drawing ap = Graph_drawing(draw_all_airports);
 	Graph_drawing al = Graph_drawing(draw_all_airlines);
 	Graph_drawing sp = Graph_drawing(draw_shortest_path);
-	
 
 	//BFS
 	cout<<"components: "<<g.component<<endl;
