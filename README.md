@@ -12,6 +12,7 @@ OpenFlights data structure
 
 ## Visual
 ![graph](./project/draw_all_airlines.png)
+![graph](./project/draw_all_airports.png)
 
 
 ## Environment
@@ -57,8 +58,8 @@ vector<Vertex> vecOfV = read_airport("airport.dat");
 vector<Edge> vecOfE = read_route("route.dat");
 Graph g;
 g.build(vecOfE, vecOfV);
-Vertex source(3484, 33.94250107,-118.4079971, "LA", "LAX"); //"Los Angeles International Airport"
-Vertex target(6341, 39.782798767089844,116.38800048828125, "Beijing", "NAY"); //"Beijing Nanyuan Airport"
+Vertex source(3374, 22.639299392700195,113.81099700927734, "Shenzhen", "SZX");
+Vertex target(2564, -23.435556411743164,-46.47305679321289, "Sao Paulo", "GRU");
 vector<int> route = g.shortestPath(source, target);
 for (size_t i = 0; i < route.size();i++) {
 	std::cout << g.arrOfVertices[route[i]].IATA << std::endl;
@@ -76,7 +77,7 @@ png.writeToFile("output_image_test.png");
 # CIF
 # NAY
 ```
-![graph](./project/output_image_test.png)
+![graph](./project/draw_shortest_path.png)
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

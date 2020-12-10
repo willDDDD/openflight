@@ -198,3 +198,17 @@ bool Graph::distCompareHelper(int first, int second) {
     }
     return first < second;
 }
+
+Graph::~Graph() {
+    for (auto i : list) {
+        delete i;
+    }
+    for (unsigned long i = 0; i < arrOfVertices_size; i++) {
+        if (arrOfVertices[i].isSeted) {
+            for (auto j : arrOfVertices[i].incid_edgs) {
+                delete j;
+            }
+        }
+    }
+    delete[] arrOfVertices;
+}
