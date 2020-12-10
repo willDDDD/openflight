@@ -177,7 +177,7 @@ void Graph_drawing::drawAirport(PNG &png, Vertex airport)
         color.l = 0.5;
         color.a = 1;
     } else {
-        color.h = hue + 100;
+        color.h = 50 + hue;
         color.s = 1;
         color.l = 0.5;
         color.a = 1;

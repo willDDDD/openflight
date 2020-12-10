@@ -52,8 +52,6 @@ int main()
 	3484,"Los Angeles International Airport","Los Angeles","United States","LAX","KLAX",33.94250107,-118.4079971,125,-8,"A","America/Los_Angeles","airport","OurAirports"
 	3374,"Shenzhen Bao'an International Airport","Shenzhen","China","SZX","ZGSZ",22.639299392700195,113.81099700927734,13,8,"U","Asia/Shanghai","airport","OurAirports"
 	2564,"Guarulhos - Governador André Franco Montoro International Airport","Sao Paulo","Brazil","GRU","SBGR",-23.435556411743164,-46.47305679321289,2459,-3,"S","America/Sao_Paulo","airport","OurAirports"
-
-
 	*/
 	Vertex source(3374, 22.639299392700195,113.81099700927734, "Shenzhen", "SZX");
     Vertex target(2564, -23.435556411743164,-46.47305679321289, "Sao Paulo", "GRU");

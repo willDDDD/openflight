@@ -24,9 +24,10 @@ CXX = clang++
 ```
 ## Datasets
 
-We change the empty data to "NA" for convenience.
+We changed \N to "NA" for convenience in airports.dat.
+We deleted "IL,10121,PKN,3910,PKN,3910,,0,AT7" in routes.dat
 
-[OpenFilghts airlines.dat](https://raw.githubusercontent.com/jpatokal/openflights/master/data/airlines.dat)
+[OpenFilghts airports.dat](https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat)
 
 [OpenFlights routes.dat](https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat)
 
@@ -46,9 +47,19 @@ Edges:
 two nodes are connected by an edge if there exists an airline between them
 Graph drawing: using the number of incident edges connected to each node to
 decide its color. The color varies according to the degree of the node.
+## Build Documentation
+IMPORTANT
+We changed \N to "NA" for convenience in airports.dat.
+We deleted "IL,10121,PKN,3910,PKN,3910,,0,AT7" in routes.dat.
+After proper modification on datasets, then the user can do the following
+
+```python
+make
+./finalproj
+```
 
 ## Usage
-The user need to input the information of the source and target. For example, we set our source to be Los Angeles International Airport and the target to be Beijing Nanyuan Airport. Then the terminal returns the sequence of the airports that is in the shortest path toward the destination. Also, the airline is indicated in the output_image_test.png.
+The user need to input the information of the source and target. For example, we set our source to be Shenzhen Bao'an International Airport and the target to be Sao Paulo International Airport. Then the terminal returns the sequence of the airports that is in the shortest path toward the destination. Also, the airline is indicated in the output_image_test.png.
 
 ```python
 PNG png;
@@ -93,4 +104,4 @@ Zongxian Feng
 
 Siyi Yu
 
-(List in alphabetical order)
+
