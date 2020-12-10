@@ -49,6 +49,7 @@ void Graph::build(const vector<Edge> &input, const vector<Vertex> &e) {
 
 void Graph::BFS() {
     component = 0;
+    number_of_vertices_by_BFS = 0;
     for (unsigned i = 0; i < arrOfVertices_size; i++) {
         if (arrOfVertices[i].isSeted == true) {
             arrOfVertices[i].is_explored = false;

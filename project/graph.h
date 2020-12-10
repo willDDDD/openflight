@@ -19,6 +19,7 @@ class Graph {
       deque<Edge*> list;
       int component;
       int count;
+      int number_of_vertices_by_BFS;
       vector<vector<Vertex>> strong_con;
       vector<Vertex> vec_of_ver;
 

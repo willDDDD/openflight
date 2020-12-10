@@ -43,6 +43,7 @@ TEST_CASE("readFromFile: test split_route") {
 vector<Vertex> vecOfV = read_airport("airport.dat");
 vector<Edge> vecOfE = read_route("route.dat");
 Graph g;
+// g.BFS();
 // g.build(vecOfE, vecOfV);
 TEST_CASE("Graph: test build") {
     g.build(vecOfE, vecOfV);
@@ -80,39 +81,13 @@ TEST_CASE("Graph: test Shortest Path 1") {
     REQUIRE("Beijing" == g.arrOfVertices[path[2]].city);
     REQUIRE("Chicago" == g.arrOfVertices[path[3]].city);
 }
-/*
-TEST_CASE("Graph drawing: test findAirportCoor") {
-    PNG png;
-    png.readFromFile("world_map.png");
-    Graph_drawing image = Graph_drawing(png);//args
-
-
-    Vertex  v1 =  Vertex(111, 50, 100, "city 1", "abc"); //id, lat, long, city, ITAT code 10S, 10E             
-    Vertex  v2 =  Vertex(112, -50, -100,"city 2", "xyz"); // id, lat, long, city, ITAT code
-
-    pair<int, int> p1 = image.findAirportCoor(v1);
-    REQUIRE(100 == p1.first);
-    REQUIRE(100 == p1.second);
-
-    pair<int, int> p2 = image.findAirportCoor(v2);
-    REQUIRE(100 == p2.first);
-    REQUIRE(100 == p2.second);
-
-    image.drawAirport(png,v1);
-    REQUIRE(0.5 == png.getPixel(100,200).l);
-
-    image.drawAirport(png,v2);
-    REQUIRE(0.5 == png.getPixel(100,200).l);
-    image.drawAirline(png, v1, v2, 270); //hue 270 is purple
-    REQUIRE(0.5 == png.getPixel(100,200).l);
-}
-*/
-
 TEST_CASE("Graph: test Shortest Path 2") {
 	// There exist a direct airline between JFK and LAX, so the size of the vector equals 2 (source airport and destination airport)
     Vertex source1(3797, 40.63980103, -73.77890015, "New York", "JFK");
 	Vertex target1(3484, 33.94250107, -118.4079971, "Los Angeles", "LAX");
     g.build(vecOfE, vecOfV);
 	vector<int> FromJFKToLAX = g.shortestPath(source1, target1);
+    REQUIRE("New York" == g.arrOfVertices[FromJFKToLAX[0]].city);
+    REQUIRE("Los Angeles" == g.arrOfVertices[FromJFKToLAX[1]].city);
 	REQUIRE(2 == FromJFKToLAX.size());
 }
