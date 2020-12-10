@@ -39,6 +39,15 @@ TEST_CASE("readFromFile: test split_route") {
     REQUIRE(16624 == split_edge(s).id);
 }
 
+vector<Vertex> vecOfV_small = read_airport("testbfs_airport.dat");
+vector<Edge> vecOfE_small = read_route("testbfs_route.dat");
+Graph g_small;
+TEST_CASE("Graph: test BFS on small sample") {
+    g_small.build(vecOfE_small, vecOfV_small);
+    g_small.BFS();
+    REQUIRE( 17 == ((unsigned) g_small.getNumberOfVTraversed()) );
+}
+
 
 vector<Vertex> vecOfV = read_airport("airport.dat");
 vector<Edge> vecOfE = read_route("route.dat");

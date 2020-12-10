@@ -28,6 +28,7 @@ class Graph {
       void build(const vector<Edge> & input, const vector<Vertex> &v);
       void BFS();
       void BFS(Vertex);
+      int getNumberOfVTraversed();
       vector<vector<Vertex>> getAllMinorityGroups();
       vector<vector<Vertex>> getExactMinorityByNum(unsigned long);
       vector<Vertex> getExactMinorityByV(Vertex);

@@ -75,6 +75,7 @@ void Graph::BFS(Vertex V) {
     temp.push_back(V);
 
     while (!q.empty()) {
+        number_of_vertices_by_BFS++;
         V=q.front();
         q.pop();
         for (size_t m = 0; m < arrOfVertices[V.id].incid_edgs.size(); m++) {
@@ -97,6 +98,12 @@ void Graph::BFS(Vertex V) {
     if (count <= 10) {
         strong_con.push_back(temp);
     }
+}
+
+int Graph::getNumberOfVTraversed() {
+    int toRet = number_of_vertices_by_BFS;
+    number_of_vertices_by_BFS = 0;
+    return toRet;
 }
 
 vector<vector<Vertex>> Graph::getAllMinorityGroups() {
