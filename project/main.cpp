@@ -9,13 +9,14 @@
 int main()
 {
 	// readFromFile
-	vector<Vertex> vecOfV = read_airport("airport.dat");
-	vector<Edge> vecOfE = read_route("route.dat");
+	vector<Vertex> vecOfV = read_airport("testbfs_airport.dat");
+	vector<Edge> vecOfE = read_route("testbfs_route.dat");
 	cout<<"pass1"<<endl;
 	//build graph and BFS
 	Graph g;
 	g.build(vecOfE, vecOfV);
 	g.BFS();
+	cout << g.getNumberOfVTraversed() << endl;
 	cout<<"pass2"<<endl;
 	// create graphDrawing
 	PNG draw_all_airports;
