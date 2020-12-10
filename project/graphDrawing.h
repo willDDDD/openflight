@@ -9,11 +9,11 @@ using namespace std;
 using namespace cs225;
 
 
-class Graph_coloring {
+class Graph_drawing {
     public:
-        Graph_coloring();
+        Graph_drawing();
 
-        Graph_coloring(cs225::PNG png);
+        Graph_drawing(cs225::PNG png);
         
         pair<int, int> findAirportCoor(Vertex); //result should be int since pixel coor is represented by ints
         

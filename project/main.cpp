@@ -26,18 +26,18 @@ int main()
 	g.build(vecOfE, vecOfV);
 	g.BFS();
 
-	PNG png;
-	png.readFromFile("world_map.png");
-	Graph_coloring image = Graph_coloring(png);//args
-	int count = 0;
-	for (auto v : vecOfV) {
-		if (g.arrOfVertices[v.id].incid_edgs.size() == 0) {
-			count++;
-		}
-		image.drawAirport(png, g.arrOfVertices[v.id]);
-	}
-	cout<<count<<endl;
-	png.writeToFile("output_image_test.png");
+	// PNG png;
+	// png.readFromFile("world_map.png");
+	// Graph_drawing image = Graph_drawing(png);//args
+	// int count = 0;
+	// for (auto v : vecOfV) {
+	// 	if (g.arrOfVertices[v.id].incid_edgs.size() == 0) {
+	// 		count++;
+	// 	}
+	// 	image.drawAirport(png, g.arrOfVertices[v.id]);
+	// }
+	// cout<<count<<endl;
+	// png.writeToFile("output_image_test.png");
 	// for (auto e : vecOfE) {
 	// 	Vertex dest = g.arrOfVertices[e.dest];
 	// 	Vertex source = g.arrOfVertices[e.source];
@@ -113,26 +113,24 @@ int main()
 	//3484,"Los Angeles International Airport","Los Angeles","United States","LAX","KLAX",33.94250107,-118.4079971,125,-8,"A","America/Los_Angeles","airport","OurAirports"
 
 	//find shortest path
-	// Vertex source(3484, 33.94250107,-118.4079971, "LA", "LAX"); //"Los Angeles International Airport"
-	// Vertex target(6048, -51.685699462891,-57.777599334717, "Stanley", "NAY"); //"Beijing Nanyuan Airport"
-	// vector<Vertex> temp = g.getExactMinorityByV(target);
-	// bool check = false;
-	// for (auto i : temp) {
-	// 	if (i.id == source.id) {
-	// 		check = true;
-	// 	}
-	// }
-	// if (check) {
-	// 	vector<int> route = g.shortestPath(source, target);
-	// 	for (size_t i = 0; i < route.size();i++) {
-	// 		std::cout << g.arrOfVertices[route[i]].city<< std::endl;
-	// 		if (i+1 < route.size()) {
-	// 			image.drawAirline(png, g.arrOfVertices[route[i]], g.arrOfVertices[route[i+1]], 270);
-	// 		}
-	//     }
-	// } else {
-	// 	cout<< "single"<<endl;
-	// }
+	//Vertex source(3484, 33.94250107,-118.4079971, "LA", "LAX"); //"Los Angeles International Airport"
+	//Vertex target(6048, -51.685699462891,-57.777599334717, "Stanley", "NAY"); //"Beijing Nanyuan Airport"
+	//Vertex source(6341, 39.782798767089844,116.38800048828125, "Beijing", "NAY");
+    //Vertex target(3830, 41.9786,-87.9048, "Chicago", "ORD");
+
+	Vertex source(3797, 40.63980103, -73.77890015, "New York", "JFK");
+	Vertex target(3484, 33.94250107, -118.4079971, "Los Angeles", "LAX");
+	vector<Vertex> temp = g.getExactMinorityByV(target);
+
+	vector<int> route = g.shortestPath(source, target);
+	for (size_t i = 0; i < route.size();i++) {
+		std::cout << g.arrOfVertices[route[i]].city<< std::endl;
+		cout<<route.size()<<endl;
+		// if (i+1 < route.size()) {
+		// 	image.drawAirline(png, g.arrOfVertices[route[i]], g.arrOfVertices[route[i+1]], 270);
+		// }
+	}
+
 	
 
 	

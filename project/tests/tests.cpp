@@ -1,5 +1,8 @@
 #include <string>
 #include <vector>
+#include "../HSLA/HSLAPixel.h"
+#include "../HSLA/PNG.h"
+#include "../HSLA/lodepng/lodepng.h"
 #include "../catch/catch.hpp"
 #include "../readFromFile.cpp"
 #include "../graph.h"
@@ -8,7 +11,8 @@
 #include "../edge.h"
 #include "../priorityQueue.h"
 
-
+using namespace cs225;
+using namespace std;
 
 TEST_CASE("readFromFile: test read_airport on the sample") {
 	vector<Vertex> res = read_airport("airport_sample.dat");
@@ -39,31 +43,48 @@ TEST_CASE("readFromFile: test split_route") {
 vector<Vertex> vecOfV = read_airport("airport.dat");
 vector<Edge> vecOfE = read_route("route.dat");
 Graph g;
+// g.build(vecOfE, vecOfV);
 TEST_CASE("Graph: test build") {
     g.build(vecOfE, vecOfV);
     REQUIRE("Goroka" == g.arrOfVertices[1].city);
 }
 TEST_CASE("Graph: test BFS by counting component") {
+    //g.build(vecOfE, vecOfV);
     g.BFS();
     REQUIRE(4567 == g.component);
 }
 TEST_CASE("Graph: test getAllMinorityGroups") {
+    //g.build(vecOfE, vecOfV);
     g.BFS();
     REQUIRE(9132 == g.getAllMinorityGroups().size());
 }
 TEST_CASE("Graph: test getExactMinorityByNum") {
+    //g.build(vecOfE, vecOfV);
     g.BFS();
     REQUIRE(6 == g.getExactMinorityByNum(2).size());
 }
 TEST_CASE("Graph: test getExactMinorityByV") {
+    //g.build(vecOfE, vecOfV);
     g.BFS();
-    REQUIRE(1 == g.getExactMinorityByV(vecOfV[0]).size());
+    REQUIRE(0 == g.getExactMinorityByV(g.arrOfVertices[1]).size());
+}
+TEST_CASE("Graph: test Shortest Path 1") {
+    //6341,"Beijing Nanyuan Airport","Beijing","China","NAY","ZBNY",39.782798767089844,116.38800048828125,0,8,"U","Asia/Shanghai","airport","OurAirports"
+    //3830,"Chicago O'Hare International Airport","Chicago","United States","ORD","KORD",41.9786,-87.9048,672,-6,"A","America/Chicago","airport","OurAirports"
+    //g.build(vecOfE, vecOfV);
+    Vertex source(6341, 39.782798767089844,116.38800048828125, "Beijing", "NAY");
+    Vertex target(3830, 41.9786,-87.9048, "Chicago", "ORD");
+    vector<int> path = g.shortestPath(source, target);
+    REQUIRE("Beijing" == g.arrOfVertices[path[0]].city);
+    REQUIRE("Datong" == g.arrOfVertices[path[1]].city);
+    REQUIRE("Beijing" == g.arrOfVertices[path[2]].city);
+    REQUIRE("Chicago" == g.arrOfVertices[path[3]].city);
 }
 /*
 TEST_CASE("Graph drawing: test findAirportCoor") {
     PNG png;
     png.readFromFile("world_map.png");
-    Graph_coloring image = Graph_coloring(png);//args
+    Graph_drawing image = Graph_drawing(png);//args
 
 
     Vertex  v1 =  Vertex(111, 50, 100, "city 1", "abc"); //id, lat, long, city, ITAT code 10S, 10E             
@@ -77,32 +98,21 @@ TEST_CASE("Graph drawing: test findAirportCoor") {
     REQUIRE(100 == p2.first);
     REQUIRE(100 == p2.second);
 
-    image.drawAirport(png,v1,0.5);
+    image.drawAirport(png,v1);
     REQUIRE(0.5 == png.getPixel(100,200).l);
 
-    image.drawAirport(png,v2,0.5);
+    image.drawAirport(png,v2);
     REQUIRE(0.5 == png.getPixel(100,200).l);
     image.drawAirline(png, v1, v2, 270); //hue 270 is purple
     REQUIRE(0.5 == png.getPixel(100,200).l);
 }
 */
 
-TEST_CASE("test Shortest Path") {
-	
-    Vertex source1(3797, 31.780000686645508,117.2979965209961, "Shanghai", "HQ");
+TEST_CASE("Graph: test Shortest Path 2") {
+	// There exist a direct airline between JFK and LAX, so the size of the vector equals 2 (source airport and destination airport)
+    Vertex source1(3797, 40.63980103, -73.77890015, "New York", "JFK");
 	Vertex target1(3484, 33.94250107, -118.4079971, "Los Angeles", "LAX");
+    g.build(vecOfE, vecOfV);
 	vector<int> FromJFKToLAX = g.shortestPath(source1, target1);
-	REQUIRE(1 == FromJFKToLAX.size());
+	REQUIRE(2 == FromJFKToLAX.size());
 }
-
-
-// TEST_CASE("Verify that file_to_vector works on a small example") {
-// 	std::vector<std::string> res = file_to_vector("tests/smallSample.txt");
-// 	std::string expected[] = {"hello", "students", "of", "cs", "225", "!!!"};
-	
-// 	REQUIRE(6 == res.size());
-
-// 	for (int i = 0; i < res.size(); i++) {
-// 		REQUIRE(expected[i] == res[i]);
-// 	}
-// }		

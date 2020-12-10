@@ -56,8 +56,8 @@ graph.o: vertex.cpp edge.cpp graph.cpp
 lodepng.o: HSLA/lodepng/lodepng.cpp
 	$(CXX) $(CXXFLAGS) HSLA/lodepng/lodepng.cpp
 
-test: output_msg catch/catchmain.cpp tests/tests.cpp edge.cpp vertex.cpp graph.cpp
-	$(LD) catch/catchmain.cpp tests/tests.cpp edge.cpp vertex.cpp graph.cpp $(LDFLAGS) -o test
+test: output_msg catch/catchmain.cpp tests/tests.cpp edge.cpp vertex.cpp graph.cpp priorityQueue.cpp
+	$(LD) catch/catchmain.cpp tests/tests.cpp edge.cpp vertex.cpp graph.cpp priorityQueue.cpp $(LDFLAGS) -o test
 
 
 clean:

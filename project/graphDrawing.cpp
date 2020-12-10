@@ -2,9 +2,9 @@
 #include <iostream>
 
 //get Airport pixel cooridnate on the map
-Graph_coloring::Graph_coloring() {}
+Graph_drawing::Graph_drawing() {}
 
-Graph_coloring::Graph_coloring(PNG new_png)
+Graph_drawing::Graph_drawing(PNG new_png)
 {
     background = new_png;
 }
@@ -12,7 +12,7 @@ Graph_coloring::Graph_coloring(PNG new_png)
 //Negative is South, positive is North.
 //Negative is West, positive is East.
 
-pair<int, int> Graph_coloring::findAirportCoor(Vertex target)
+pair<int, int> Graph_drawing::findAirportCoor(Vertex target)
 {
     double lat_per_pix = 180.0 / 1025;
     double long_per_pix = 360.0 / 2048;
@@ -25,7 +25,7 @@ pair<int, int> Graph_coloring::findAirportCoor(Vertex target)
     return result_pix;
 }
 
-void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lum)
+void Graph_drawing::drawAirline(PNG &png, Vertex source, Vertex dest, double lum)
 {
     pair<double, double> source_coordinate = findAirportCoor(source);
     pair<double, double> dest_coordinate = findAirportCoor(dest);
@@ -48,9 +48,6 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
             double x_diff = 2048 - x2 + x1;
             double y_diff = y1 - y2;
             double coor = y1 - (y_diff / x_diff) * x1;
-            cout<<"y1: "<<y1<<endl;
-            cout<<"coor: "<<coor<<endl;
-            cout<<"y2: "<<y2<<endl;
             for (int x = 0; x < x1; x++) {
                 double y = ((x - 0) * (y1 - coor) / (x1 - 0)) + coor;
                 HSLAPixel &pixel = png.getPixel(x, y);
@@ -167,7 +164,7 @@ void Graph_coloring::drawAirline(PNG &png, Vertex source, Vertex dest, double lu
 }
 
 
-void Graph_coloring::drawAirport(PNG &png, Vertex airport)
+void Graph_drawing::drawAirport(PNG &png, Vertex airport)
 {
     pair<int, int> airport_coordinate = findAirportCoor(airport);
     int x = airport_coordinate.first;

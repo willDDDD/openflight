@@ -139,7 +139,6 @@ vector<int> Graph::shortestPath(Vertex source, Vertex target) {
         for (auto e : arrOfVertices[u].incid_edgs) {
             if (arrOfVertices[e->dest].short_vis == false) {
                 int distance = getDistance(e);
-                std::cout << "distance: " << distance << std::endl;
                 if (distCompareHelper(dist[u] + distance, dist[e->dest])) {
                     int new_dis = dist[u] + distance;
                     pq.updateDistance(dist, e->dest, new_dis);
@@ -153,6 +152,10 @@ vector<int> Graph::shortestPath(Vertex source, Vertex target) {
     vector<int> r;
     r.push_back(t);
     while (pre[t] != source.id) {
+        if (pre[t] == -1) {
+            cout<< "no shortest path" << endl;
+            return vector<int>();
+        }
         t = pre[t];
         r.push_back(t);
     }
