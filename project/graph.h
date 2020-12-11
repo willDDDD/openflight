@@ -1,6 +1,5 @@
 #pragma once
 
-//hash table, seperate chaining, link list
 #include "vertex.h"
 #include "edge.h"
 #include "priorityQueue.h"
@@ -16,7 +15,8 @@ using namespace std;
  * The Graph class
  * We define each route as an Edge and each airport as a vertex
  * Implemented in Adjacency list
- * This is where our major graph algorithms are defined
+ * This is where some of our major graph algorithms are defined
+ * The methods that projects data onto world map are in graphDrawing.h
  */
 class Graph {
     public:

@@ -53,7 +53,7 @@ decide its color. The color varies according to the degree of the node.
 IMPORTANT
 We changed \N to "NA" for convenience in airports.dat.
 We deleted "IL,10121,PKN,3910,PKN,3910,,0,AT7" in routes.dat.
-After proper modification on datasets, then the user can do the following
+After those proper modifications on datasets (the dataset files stored in our folder are already properly adjusted), the user can do the following
 
 ```python
 make
