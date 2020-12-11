@@ -20,28 +20,11 @@ class priorityQueue {
         vector<int> id_to_dist_;
         /*
          * The array that represents the heap
-         */
-        // int* arr_for_heap_;
-        /*
-         * The array that represents the heap
          * the first int is the airport id
          * the second int is the distance of that airport to the current center airport
          */
         vector<pair<int, int>> vec_for_heap_;
-        /*
-         * the current size of arr_for_heap_
-         */
-        // unsigned afhSize;
-        /*
-         * the current number of elements in the heap
-         * excluding the thing on the 0th index
-         */
-        // unsigned currentHeapSize;
 
-        /*
-         * resize arr_for_heap_
-         */
-        // void resizeArray(); // I realized that we do not actually need this
         void buildHeap();
         bool hasAChild(unsigned currIdx);
         /*
@@ -71,14 +54,33 @@ class priorityQueue {
         unsigned findIndex(int id);
     public:
         /*
-         * This function is supposed to be called only once per instance
+         * The constructor of the priority Queue class
          */
         priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map);
+        /*
+         * Update the distance of a element in the heap and adjust its position
+         * in the heap accordingly
+         * @param dist_map the map that map a airport id to its distance to the
+         *        current source airport
+         * @param id the id of the airport whose distance needs to be updated
+         * @param newDis the updated distance
+         */
         void updateDistance(const map<int, int> & dist_map, int id, int newDis);
+        /*
+         * Standard removeMin() method for a priority queue to pop out the
+         * id of the airport that is currently the closest to the source airport
+         * @return the id of the currently closest airport
+         */
         int removeMin();
+        /*
+         * For debugging purpose, prints out all the elements in the heap by their
+         * order in vec_for_heap_
+         */
         void printElements();
         /*
-         * See what is now at the top of the heap
+         * See what is now at the top of the heap but does not pop out the
+         * smallest element
+         * @return the current smallest element
          */
         int peek() const;
 };

@@ -4,7 +4,7 @@
 #include <cmath>
 using namespace std;
 
-void Graph::buildhash(const vector<Vertex> &input) {
+void Graph::buildArrOfVertices(const vector<Vertex> &input) {
     int maxsize = 0;
     for (auto i : input) {
         if (i.id > maxsize) {
@@ -21,7 +21,7 @@ void Graph::buildhash(const vector<Vertex> &input) {
 }
 
 void Graph::build(const vector<Edge> &input, const vector<Vertex> &e) {
-    buildhash(e);
+    buildArrOfVertices(e);
     for (auto i : input) {
         bool c = true;
         for (unsigned long m = 0; m < list.size();m++) {
@@ -83,10 +83,10 @@ void Graph::BFS(Vertex V) {
             if (arrOfVertices[w].is_explored == false) {
                 arrOfVertices[w].is_explored = true;
                 arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros = 1;
-                q.push(arrOfVertices[w]); // the thing that get pushed is a pointer
+                q.push(arrOfVertices[w]);
                 count++;
                 if (count <= 10) {
-                    temp.push_back(arrOfVertices[w]); // the thing that get pushed is a pointer
+                    temp.push_back(arrOfVertices[w]);
                 }
             } else {
                 if (arrOfVertices[V.id].incid_edgs[m]->so_->dis_cros == 0) {
@@ -96,7 +96,7 @@ void Graph::BFS(Vertex V) {
         }
     }
     if (count <= 10) {
-        strong_con.push_back(temp);
+        minority_groups.push_back(temp);
     }
 }
 
@@ -107,12 +107,12 @@ int Graph::getNumberOfVTraversed() {
 }
 
 vector<vector<Vertex>> Graph::getAllMinorityGroups() {
-    return strong_con;
+    return minority_groups;
 }
 
 vector<vector<Vertex>> Graph::getExactMinorityByNum(unsigned long num) {
     vector<vector<Vertex>> temp;
-    for (auto & i : strong_con) {
+    for (auto & i : minority_groups) {
         if (i.size() == num) {
             temp.push_back(i);
         }
@@ -121,7 +121,7 @@ vector<vector<Vertex>> Graph::getExactMinorityByNum(unsigned long num) {
 }
 
 vector<Vertex> Graph::getExactMinorityByV(Vertex V) {
-    for (auto i : strong_con) {
+    for (auto i : minority_groups) {
         for (auto & j : i) {
             if (j.id == V.id) {
                 return i;
@@ -180,10 +180,9 @@ int Graph::getDistance(Edge *e) {
 
    
     long double PI = 0.017453292519943295;
-    // long double R = 6.371229*1e6;
 
     long double a = 0.5 - cos((lat2 - lat1) * PI)/2 + cos(lat1 * PI) * cos(lat2 * PI) * (1 - cos((lon2 - lon1) * PI))/2;
-    return int(12742 * asin(sqrt(a))); // in km
+    return int(12742 * asin(sqrt(a)));
 }
 
 bool Graph::distCompareHelper(int first, int second) {

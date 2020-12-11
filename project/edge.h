@@ -12,20 +12,39 @@ using namespace std;
  */
 class Edge {
     public:
-
+        /*
+         * The no-argument constructor of the edge class
+         */
         Edge();
+        /*
+         * The destructor of the edge class
+         */
         ~Edge();    
-
-        Edge(int,int,int,bool);
+        /*
+         * The commonly used constructor of the edge class
+         * @param a id of the edge
+         * @param b source airport
+         * @param c destination airport
+         * @param d whether the edge is in the full deque of edges
+         */
+        Edge(int a, int b, int c, bool d);
         
+        /*
+         * The source airport of the current edge
+         */
         int source;
+        /*
+         * The destination airport of the current edge
+         */
         int dest;
+        /*
+         * The id of the air route re
+         */
         int id;
         
         int dis_cros; // 0-unexplored;1-discovery;2-cross
         
         bool isInRightList;// true-right;false-middle
-        //HSLAPixel edge_color;
         Edge * so_;
         Edge * de_;
 };
