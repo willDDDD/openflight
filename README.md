@@ -6,6 +6,8 @@ calculate the distance between two airports. (https://openflights.org/data.html)
 datasets we will use are the airport dataset and the route dataset. The format of the dataset
 will be a .dat file where each line contains detailed information for an airline route.
 For detailed information, please read GOALS.pdf, DEVELOPMENT.pdf, log.txt, and RESULT.pdf.
+
+[final project youtube link](https://youtu.be/Jr_K6sRrSXI)
 ## Name
 
 OpenFlights data structure
