@@ -38,13 +38,19 @@ class Edge {
          */
         int dest;
         /*
-         * The id of the air route re
+         * The id of the air route 
          */
         int id;
-        
-        int dis_cros; // 0-unexplored;1-discovery;2-cross
-        
-        bool isInRightList;// true-right;false-middle
+        /*
+         * The status of the current edge in BFS
+         * 0: unexplored; 1: discovery; 2: cross
+         */
+        int dis_cros;
+        /*
+         * If the instance belongs to the full list (deque) of edge
+         * or to deque of incident edges of a vertex
+         */
+        bool isInRightList;
         Edge * so_;
         Edge * de_;
 };

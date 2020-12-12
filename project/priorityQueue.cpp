@@ -1,34 +1,14 @@
 #include "priorityQueue.h"
 
 priorityQueue::priorityQueue(const vector<Vertex> & vec, const map<int, int> & dist_map) {
-    // id_to_dist_.resize(VECTOR_MAX_SIZE);
     vec_for_heap_.push_back(pair<int, int>(-100, -100));
     for (unsigned i = 0; i < vec.size(); i++) {
         vec_for_heap_.push_back(pair<int, int>(vec[i].id, dist_map.at(vec[i].id)));
-        // id_to_dist_[vec[i].id] = dist_map.at(vec[i].id);
     }
-    // arr_for_heap_ = new int[HEAP_MAX_SIZE];
-    // arr_for_heap_[0] = -100;
-    // afhSize = 0;
     buildHeap();
 }
 
-// void priorityQueue::resizeArray() {
-//     unsigned newAfhSize = afhSize * 2;
-//     int * newArr = new int[newAfhSize];
-//     for (unsigned i = 0; i <= afhSize; i++) {
-//         newArr[i] = arr_for_heap_[i];
-//     }
-//     delete [] arr_for_heap_;
-//     arr_for_heap_ = newArr;
-//     afhSize = newAfhSize;
-// }
-
 void priorityQueue::buildHeap() {
-    // for (unsigned i = 0; i < vec.size(); i++) {
-    //     arr_for_heap_[i + 1] = vec[i].id;
-    // }
-    // currentHeapSize = vec.size();
     for (unsigned i = findParent(vec_for_heap_.size() - 1); i >= 1; i--) {
         heapifyDown(i);
     }

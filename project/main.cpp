@@ -15,7 +15,7 @@ int main()
 	// bulid graph and BFS
 	g_small.build(vecOfE_small, vecOfV_small);
 	g_small.BFS();
-	cout << "g_samll.getNumberOfVTraversed(): "<< g_small.getNumberOfVTraversed() << endl;
+	cout << "g_small.getNumberOfVTraversed(): "<< g_small.getNumberOfVTraversed() << endl;
 	// readFromFile original database
 	vector<Vertex> vecOfV = read_airport("airport.dat");
 	vector<Edge> vecOfE = read_route("route.dat");

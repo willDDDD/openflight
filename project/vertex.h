@@ -47,8 +47,17 @@ class Vertex {
          * IATA the 3-letter IATA code. Null if not asssigned/unknown.
          */
         string IATA;
+        /* 
+         * Whether the vertex is already explored
+         */
         bool is_explored;
+        /* 
+         * Whether the vertex exists and is already set in arrOfVertices
+         */
         bool isSeted;
+        /* 
+         * Whether the vertex is visited in the shortest path algorithm
+         */
         bool short_vis;
         /* 
          * The deque of incident edges

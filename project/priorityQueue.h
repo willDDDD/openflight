@@ -10,6 +10,7 @@ using std::pair;
 
 /*
  * Reference: xinlong3 lab_heap
+ * The priority queue data structure implemented by heap
  */
 class priorityQueue {
     private:
@@ -24,20 +25,62 @@ class priorityQueue {
          * the second int is the distance of that airport to the current center airport
          */
         vector<pair<int, int>> vec_for_heap_;
-
+        /*
+         * builds the heap using heapifyDown
+         */
         void buildHeap();
+        /*
+         * Tells if an element has a child
+         * @param currIdx the index of the element
+         * @return true if the element has a child, false otherwise
+         */
         bool hasAChild(unsigned currIdx);
         /*
-         * Compare the first distance to the second distance
+         * Compare the first distance of an airport to the second distance of another
          * break tie by returning true
+         * @param the id of the first airport
+         * @param the id of the second airport
+         * @return true if the first distance is shorter than the second one by our definition
          */
         bool firstShorterThanSec(int firstId, int secondId);
+        /*
+         * Find the left child of an element
+         * @param currIdx the index of the element
+         * @return the index of its left child
+         */
         unsigned findLeftChild(unsigned currIdx);
+        /*
+         * Find the right child of an element
+         * @param currIdx the index of the element
+         * @return the index of its right child
+         */
         unsigned findRightChild(unsigned currIdx);
+        /*
+         * Find the parent of an element in the heap
+         * @param currIdx the index of the element
+         * @return the index of its parent
+         */
         unsigned findParent(unsigned currIdx);
+        /*
+         * the standard heapify-up operation on an element in a heap
+         * @param currIdx the index of the element
+         */
         void heapifyUp(unsigned currIdx);
+        /*
+         * the standard heapify-down operation on an element in a heap
+         * @param currIdx the index of the element
+         */
         void heapifyDown(unsigned currIdx);
+        /*
+         * swap two elements in vec_for_heap_
+         * @param first the index of the first element to be swapped
+         * @param sec the index of the second element to be swapped
+         */
         void swap(unsigned first, unsigned sec);
+        /*
+         * Tells if the heap is now empty
+         * @return true if the heap is empty
+         */
         bool empty() const;
         /*
          * Returns the index of child of the highest priority.
