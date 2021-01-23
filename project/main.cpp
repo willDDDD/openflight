@@ -77,5 +77,5 @@ int main()
 	}
 	draw_all_airlines.writeToFile("draw_all_airlines.png");
 	//2021/01/23
-	std::cout<<'2021/01/23'<<endl
+	std::cout<<'2021/01/23'<<endl;
 }
