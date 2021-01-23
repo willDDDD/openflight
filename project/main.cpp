@@ -76,4 +76,6 @@ int main()
 		al.drawAirline(draw_all_airlines, g.arrOfVertices[e.source], g.arrOfVertices[e.dest], 270);
 	}
 	draw_all_airlines.writeToFile("draw_all_airlines.png");
+	//2021/01/23
+	std::cout<<'2021/01/23'<<endl
 }
