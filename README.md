@@ -1,4 +1,4 @@
-# Final Project
+# OpenFlights Project
 
 This dataset provides us with the absolute location (latitude and
 longitude) and airlines of every airport. We can use the absolute location to
